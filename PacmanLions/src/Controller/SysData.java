@@ -27,21 +27,24 @@ public class SysData {
 
 	
 	private static SysData SysData;
+	// hashmap to save all the questions each questions have a key which is its difficulty level
 	private HashMap<Difficulty, ArrayList<Questions>> questions;
+	// list for all the games
 	private ArrayList<Game> games;
 	private ArrayList<Game> pausedGames;
+	// all the game rules as a string array
 	private ArrayList<String> rules;
 	private String quesJsonPath = "src/QuestionsFormat.txt"; 
 	private String originalPath = quesJsonPath;
 
-
+	// SINGELTON
 	public static SysData getInstance() {
 		if (SysData == null)
 			SysData = new SysData();
 		return SysData;
 	}
 
-	//************************************** constructor*********************************************************************
+	//constructor
 	public SysData() {
 
 		questions = new HashMap<Difficulty, ArrayList<Questions>>();
@@ -52,7 +55,7 @@ public class SysData {
 		games.add(g);
 	}
 
-	//*********************************getters and setters********************************************************************
+	//getters and setters
 	public HashMap<Difficulty, ArrayList<Questions>> getQuestions() {
 		return questions;
 	}
@@ -84,8 +87,7 @@ public class SysData {
 	public void setRules(ArrayList<String> rules) {
 		this.rules = rules;
 	}
-	// *******************************************loadQuestions************************************************************************
-
+	// load Questions from the JSON file 
 	@SuppressWarnings("unchecked")
 	public boolean loadQuestions(String externalPath) {
 
@@ -156,12 +158,13 @@ public class SysData {
 		return true;
 	}
 	
-	
-	private void resetPathToDefault() {// Helper method
+	// Helper method
+	private void resetPathToDefault() {
 		quesJsonPath = originalPath;
 	}
 	
-	static Difficulty getQuestionLevel(int level) { // Helper method to define question's difficulty level
+	// Helper method to define question's difficulty level
+	static Difficulty getQuestionLevel(int level) { 
 		if (level == 1)
 			return Difficulty.EASY;
 		else if (level == 2)
@@ -173,7 +176,7 @@ public class SysData {
 	}
 	
 	
-	//************************************************add Question****************************************************************************
+	//add Question to the questions array
 		public void addQuestion(Questions question) {
 			ArrayList<Questions> myArray = questions.get(question.getLevel());
 			if (myArray == null) {
@@ -186,7 +189,7 @@ public class SysData {
 
 		}
 
-		//************************************************remove question***************************************************************************
+		//deleting a question from our records
 		public boolean removeQuestion(Questions question) {
 			ArrayList<Questions> myArray = questions.get(question.getLevel());
 			if (myArray.contains(question)) {
@@ -196,7 +199,7 @@ public class SysData {
 			return false;
 		}
 
-		//*********************************************Edit Question******************************************************************************
+		//Edit/modifing a question by deleteing the older version of it and adding a new question to list
 		public boolean editQuestion(Questions question, Questions newQuestion) {
 			if (removeQuestion(question)) {
 				addQuestion(newQuestion);
@@ -204,7 +207,7 @@ public class SysData {
 			}
 			return false;
 		}
-		//***********************************************popQuestion*****************************************************************************
+		//poping a random question by getting a random difficutly and after that a random questions from that level we choose
 		public Questions popQuestion() {
 			Object[] diff = questions.keySet().toArray();
 			Difficulty key = (Difficulty) diff[new Random().nextInt(diff.length)];
@@ -213,7 +216,7 @@ public class SysData {
 			return q;
 		}
 	
-	
+		// loading the data from the JSON files by checking if the game stopped/paused or finished 
 		public boolean loadData(DataType type) {
 
 			if (type == null)
@@ -254,6 +257,7 @@ public class SysData {
 			 }
 		} 
 		
+		//writing the data to store it
 		public boolean writeData(DataType type)
 		{
 			if(type==null)

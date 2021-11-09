@@ -2,8 +2,10 @@ package Model;
 
 public class Ghost {
 	
+	// where the pacman start as a format of x and y in the maze matrix
 	private int startpointX;
 	private int startpointY;
+	// where the pacman is right now as a format of x and y in the maze matrix
 	private int currCordinateX;
 	private int currCordinateY;
 	private int colorFlag = 0; // If blown the flag turns to 1 then we know we should change the color
@@ -18,6 +20,7 @@ public class Ghost {
 	 * @param colorFlag
 	 * @param speed
 	 */
+	// constructor
 	public Ghost(int startpointX, int startpointY, int currCordinateX, int currCordinateY, int colorFlag,
 			double speed) {
 		super();
@@ -29,6 +32,7 @@ public class Ghost {
 		this.speed = speed;
 	}
 	
+	// getters and setters
 	public int getStartpointX() {
 		return startpointX;
 	}
@@ -66,7 +70,7 @@ public class Ghost {
 		this.speed = speed;
 	}
 
-	
+	// method to control the pacmans coordinates if the pacman goes up
 	public void goUp(Maze maze1,Game game ,int x , int y) {
 		int [][]maze = maze1.getMaze();
 		switch(maze[x-1][y]) {
@@ -81,7 +85,8 @@ public class Ghost {
    			  this.currCordinateY = y;
 		}
 	}
-	
+
+	// method to control the pacmans coordinates if the pacman goes down
 	public void goDown(Maze maze1,Game game ,int x , int y) {
 		int [][]maze = maze1.getMaze();
 		switch(maze[x+1][y]) {
@@ -98,7 +103,7 @@ public class Ghost {
 	}
 	
 	
-	
+	// method to control the pacmans coordinates if the pacman goes left
 	public void goLeft(Maze maze1,Game game ,int x , int y) {
 		int [][]maze = maze1.getMaze();
 		switch(maze[x][y-1]) {
@@ -126,6 +131,7 @@ public class Ghost {
 		}
 	}
 
+	// method to control the pacmans coordinates if the pacman goes right
 	public void goRight(Maze maze1,Game game ,int x , int y) {
 		int [][]maze = maze1.getMaze();
 		switch(maze[x][y+1]) {
@@ -152,8 +158,5 @@ public class Ghost {
    			  this.currCordinateY = y+1;
 		}
 	}
-	
-	
-	
 	
 }

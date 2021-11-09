@@ -6,7 +6,9 @@ public class Game {
 	private int level;
 	private int score;
 	private int live;
-	private int totalQuest;    
+	// number of questions answered in total
+	private int totalQuest; 
+	// number of easy answers the player answer them right   
 	private int correctquesteasy; 
 	private int correctquestmedium;
 	private int correctquesthard;
@@ -23,6 +25,7 @@ public class Game {
 	 * @param correctquestmedium
 	 * @param correctquesthard
 	 */
+	// contrsuctor
 	public Game(String nickname, int level, int score, int live, int totalQuest, int correctquesteasy,
 			int correctquestmedium, int correctquesthard) {
 		super();
@@ -39,7 +42,8 @@ public class Game {
 	public Game() {
 		
 	}
-	
+
+	// getters and setters
 	public String getNickname() {
 		return Nickname;
 	}

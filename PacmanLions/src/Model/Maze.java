@@ -11,6 +11,8 @@ public class Maze {
 //ghost=6
 //empty = 7
 	
+
+	// we represnted the game board as an 30X30 Matrix
 	public int [][] maze =  {{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
 							{1,3,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,3,1},
 							{1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1},
@@ -43,8 +45,7 @@ public class Maze {
 							{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}};
 
 	
-   
-
+   	// getters and setters
 	public int[][] getMaze() {
 		return maze;
 	}
@@ -59,9 +60,5 @@ public class Maze {
 	this.maze[6][0] = 2;
 
 	}
-
-
-	
-	
 
 }

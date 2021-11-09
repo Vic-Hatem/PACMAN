@@ -3,14 +3,18 @@ package Model;
 import Utils.Difficulty;
 
 public class Questions {
-	
+	//for saving the question
 	private String question ;
+
 	private String answer1 ;
 	private String answer2 ;
 	private String answer3 ;
 	private String answer4 ;
+	// the number of the currect answer [1,2,3,4]
 	private String correct_ans;
+	// the questions level/difficulty {EASY , MEDIUM , HARD}
 	Difficulty level;
+	// the team that added the question
 	private String team;
 	
 	
@@ -25,6 +29,8 @@ public class Questions {
 	 * @param level
 	 * @param team
 	 */
+
+	// Constructor
 	public Questions(String question, String answer1, String answer2, String answer3, String answer4,
 			String correct_ans, Difficulty level, String team) {
 		super();
@@ -39,7 +45,7 @@ public class Questions {
 	}
 	
 	
-
+// getters and setters		
 
 	public String getQuestion() {
 		return question;
@@ -185,7 +191,7 @@ public class Questions {
 
 
 	
-	//if the user chose an answer - we check if it equals the correct answer we declared
+	//check if the user choose the answer that the user choose is the correct answer!
 	public Boolean checkCorrect(String answer) {
 		if(answer.equals(this.correct_ans))
 		{

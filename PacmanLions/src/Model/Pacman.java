@@ -1,9 +1,10 @@
 package Model;
 
 public class Pacman {
-
+	// where the pacman start as a format of x and y in the maze matrix
 	private int startpointX;
 	private int startpointY;
+	// where the pacman is right now as a format of x and y in the maze matrix
 	private int currCordinateX;
 	private int currCordinateY;
 	private int colorFlag = 0; // If blown the flag turns to 1 then we know we should change the color
@@ -16,6 +17,7 @@ public class Pacman {
 	 * @param currCordinateX
 	 * @param currCordinateY
 	 */
+	//constructor
 	public Pacman(int startpointX, int startpointY, int currCordinateX, int currCordinateY , int colorFlag) {
 		super();
 		this.startpointX = startpointX;
@@ -25,7 +27,7 @@ public class Pacman {
 		this.colorFlag = colorFlag;
 	}
 	
-	
+	// getters and setters
 	public int getStartpointX() {
 		return startpointX;
 	}
@@ -51,7 +53,7 @@ public class Pacman {
 		this.currCordinateY = currCordinateY;
 	}
 	
-	
+	// modifing/changing the maze according to the level/score
 	public void checkLevelByScore(int score , int currentLevel , Game game,  Maze maze1) {
 		int [][]maze = maze1.getMaze();
 		if(score > 49 && score < 101) {
@@ -69,6 +71,7 @@ public class Pacman {
 		else game.setLevel(4);	
 	}
 	
+	// method to control the pacmans coordinates if the pacman goes up
 	public void goUp(Maze maze1,Game game ,int x , int y) {
 		int [][]maze = maze1.getMaze();
 		switch(maze[x-1][y]) {
@@ -122,7 +125,9 @@ public class Pacman {
    			  this.currCordinateY = y;
 		}
 	}
-		
+
+
+	// method to control the pacmans coordinates if the pacman goes down
 	public void goDown(Maze maze1,Game game ,int x , int y) {
 		int [][]maze = maze1.getMaze();
 
@@ -180,7 +185,7 @@ public class Pacman {
 		}
 	}
 	
-	
+	// method to control the pacmans coordinates if the pacman goes left
 	public void goLeft(Maze maze1,Game game ,int x , int y) {
 		int [][]maze = maze1.getMaze();
 		switch(maze[x][y-1]) {
@@ -249,7 +254,7 @@ public class Pacman {
 		}
 	}
 
-	
+	// method to control the pacmans coordinates if the pacman goes right
 	public void goRight(Maze maze1,Game game ,int x , int y) {
 		int [][]maze = maze1.getMaze();
 		switch(maze[x][y+1]) {
