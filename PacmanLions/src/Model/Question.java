@@ -2,7 +2,7 @@ package Model;
 
 import Utils.Difficulty;
 
-public class Questions {
+public class Question {
 	//for saving the question
 	private String question ;
 
@@ -31,7 +31,7 @@ public class Questions {
 	 */
 
 	// Constructor
-	public Questions(String question, String answer1, String answer2, String answer3, String answer4,
+	public Question(String question, String answer1, String answer2, String answer3, String answer4,
 			String correct_ans, Difficulty level, String team) {
 		super();
 		this.question = question;
@@ -118,7 +118,7 @@ public class Questions {
 
 	@Override
 	public String toString() {
-		return "Questions [question=" + question + ", answer1=" + answer1 + ", answer2=" + answer2 + ", answer3="
+		return "Question [question=" + question + ", answer1=" + answer1 + ", answer2=" + answer2 + ", answer3="
 				+ answer3 + ", answer4=" + answer4 + ", correct_ans=" + correct_ans + ", level=" + level + ", team="
 				+ team + "]";
 	}
@@ -148,7 +148,7 @@ public class Questions {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Questions other = (Questions) obj;
+		Question other = (Question) obj;
 		if (answer1 == null) {
 			if (other.answer1 != null)
 				return false;

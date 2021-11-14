@@ -18,7 +18,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import Model.Game;
-import Model.Questions;
+import Model.Question;
 import Utils.DataType;
 import Utils.Difficulty;
 import Utils.JsonParser;
@@ -28,7 +28,7 @@ public class SysData {
 	
 	private static SysData SysData;
 	// hashmap to save all the questions each questions have a key which is its difficulty level
-	private HashMap<Difficulty, ArrayList<Questions>> questions;
+	private HashMap<Difficulty, ArrayList<Question>> questions;
 	// list for all the games
 	private ArrayList<Game> games;
 	private ArrayList<Game> pausedGames;
@@ -56,11 +56,11 @@ public class SysData {
 	}
 
 	//getters and setters
-	public HashMap<Difficulty, ArrayList<Questions>> getQuestions() {
+	public HashMap<Difficulty, ArrayList<Question>> getQuestions() {
 		return questions;
 	}
 
-	public void setQuestions(HashMap<Difficulty, ArrayList<Questions>> Questions) {
+	public void setQuestions(HashMap<Difficulty, ArrayList<Question>> Questions) {
 		questions = Questions;
 	}
 
@@ -136,11 +136,11 @@ public class SysData {
 					String a4 = (String) ansArray.get(3);
 
 				// create an new object of the question.
-				Questions questionToAdd = new Questions(text,a1,a2,a3,a4, correctAnswerNum, level, team);
+				Questions questionToAdd = new Question(text,a1,a2,a3,a4, correctAnswerNum, level, team);
 
 				// Add the question to questions according to the question level.
 				if (!questions.containsKey(questionToAdd.getLevel())) {
-					questions.put(questionToAdd.getLevel(), new ArrayList<Questions>());
+					questions.put(questionToAdd.getLevel(), new ArrayList<Question>());
 					questions.get(questionToAdd.getLevel()).add(questionToAdd);
 
 				} else {
@@ -177,10 +177,10 @@ public class SysData {
 	
 	
 	//add Question to the questions array
-		public void addQuestion(Questions question) {
-			ArrayList<Questions> myArray = questions.get(question.getLevel());
+		public void addQuestion(Question question) {
+			ArrayList<Question> myArray = questions.get(question.getLevel());
 			if (myArray == null) {
-				myArray = new ArrayList<Questions>();
+				myArray = new ArrayList<Question>();
 				myArray.add(question);
 			} else if (!myArray.contains(question)) {
 				myArray.add(question);
@@ -190,8 +190,8 @@ public class SysData {
 		}
 
 		//deleting a question from our records
-		public boolean removeQuestion(Questions question) {
-			ArrayList<Questions> myArray = questions.get(question.getLevel());
+		public boolean removeQuestion(Question question) {
+			ArrayList<Question> myArray = questions.get(question.getLevel());
 			if (myArray.contains(question)) {
 				questions.get(question.getLevel()).remove(question);
 				return true;
@@ -200,7 +200,7 @@ public class SysData {
 		}
 
 		//Edit/modifing a question by deleteing the older version of it and adding a new question to list
-		public boolean editQuestion(Questions question, Questions newQuestion) {
+		public boolean editQuestion(Question question, Question newQuestion) {
 			if (removeQuestion(question)) {
 				addQuestion(newQuestion);
 				return true;
@@ -211,7 +211,7 @@ public class SysData {
 		public Questions popQuestion() {
 			Object[] diff = questions.keySet().toArray();
 			Difficulty key = (Difficulty) diff[new Random().nextInt(diff.length)];
-			ArrayList<Questions> myArray = questions.get(key);
+			ArrayList<Question> myArray = questions.get(key);
 			Questions q = myArray.get(new Random().nextInt(myArray.size()));
 			return q;
 		}
