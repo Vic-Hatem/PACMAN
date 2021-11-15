@@ -14,17 +14,15 @@ public class MainController {
 		
 		System.out.println("~~ Welcome to PACMAN ~~");
 		initSysData();
-//		SysData sysdata = new SysData();
 		Maze maze = new Maze();
-		Game game = new Game("Hatooom",1,0,3,0,0,0,0);
-		Pacman pacman = new Pacman(23,15,23,15,0);
-		
-		Ghost ghost1= new Ghost(20,15,20,15,0,0.0);
-		Ghost ghost2= new Ghost(20,16,20,16,0,0.0);
-		Ghost ghost3= new Ghost(20,17,20,17,0,0.0);
+
 		
 
 		printMaze(maze);
+		
+		
+		
+		
 	}
 
 	private static void initSysData() {
