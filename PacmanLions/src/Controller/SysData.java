@@ -47,7 +47,7 @@ public class SysData {
 	//constructor
 	public SysData() {
 
-		questions = new HashMap<Difficulty, ArrayList<Questions>>();
+		questions = new HashMap<Difficulty, ArrayList<Question>>();
 		games = new ArrayList<Game>();
 //		pausedGames = new ArrayList<Game>();
 		rules = new ArrayList<>();
@@ -136,7 +136,7 @@ public class SysData {
 					String a4 = (String) ansArray.get(3);
 
 				// create an new object of the question.
-				Questions questionToAdd = new Question(text,a1,a2,a3,a4, correctAnswerNum, level, team);
+				Question questionToAdd = new Question(text,a1,a2,a3,a4, correctAnswerNum, level, team);
 
 				// Add the question to questions according to the question level.
 				if (!questions.containsKey(questionToAdd.getLevel())) {
@@ -208,11 +208,11 @@ public class SysData {
 			return false;
 		}
 		//poping a random question by getting a random difficutly and after that a random questions from that level we choose
-		public Questions popQuestion() {
+		public Question popQuestion() {
 			Object[] diff = questions.keySet().toArray();
 			Difficulty key = (Difficulty) diff[new Random().nextInt(diff.length)];
 			ArrayList<Question> myArray = questions.get(key);
-			Questions q = myArray.get(new Random().nextInt(myArray.size()));
+			Question q = myArray.get(new Random().nextInt(myArray.size()));
 			return q;
 		}
 	

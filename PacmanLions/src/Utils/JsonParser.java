@@ -15,12 +15,11 @@ import com.google.gson.reflect.TypeToken;
 
 import Model.Maze;
 import Model.Game;
-import Model.Questions;
+import Model.Question;
 
 /**
  * JsonParser is a generic singleton class applyed to parse the JsonObject / JsonObject to List/Object of one of the project classes
  * that are saved in a text files formated as Json, that exists in JsonFiles package
- * @author rawix
  *
  */
 public class JsonParser {
@@ -64,8 +63,8 @@ public class JsonParser {
 				type = new TypeToken<List<Maze>>(){}.getType();
 				else if(clazz instanceof Game)
 					type = new TypeToken<List<Game>>(){}.getType();
-						else if(clazz instanceof Questions)
-							type = new TypeToken<List<Questions>>(){}.getType();
+						else if(clazz instanceof Question)
+							type = new TypeToken<List<Question>>(){}.getType();
 								else if(clazz instanceof String)
 									type = new TypeToken<List<String>>(){}.getType();
 									System.out.println("data is");
@@ -99,8 +98,8 @@ public class JsonParser {
 				type = new TypeToken<Maze>(){}.getType();
 				else if(clazz instanceof Game)
 					type = new TypeToken<Game>(){}.getType();
-						else if(clazz instanceof Questions)
-							type = new TypeToken<Questions>(){}.getType();
+						else if(clazz instanceof Question)
+							type = new TypeToken<Question>(){}.getType();
 								else if(clazz instanceof String)
 									type = new TypeToken<String>(){}.getType();
 									parsedObject = gson.fromJson(data, type);
@@ -128,8 +127,8 @@ public class JsonParser {
 					type = new TypeToken<List<Game>>(){}.getType();
 					System.out.println("im in the parse list to jason");
 					System.out.println(type);}
-						else if(clazz instanceof Questions)
-							type = new TypeToken<List<Questions>>(){}.getType();
+						else if(clazz instanceof Question)
+							type = new TypeToken<List<Question>>(){}.getType();
 								else if(clazz instanceof String)
 									type = new TypeToken<List<String>>(){}.getType();
 									String parsedList = gson.toJson(objectsList, Collection.class);
@@ -154,8 +153,8 @@ public class JsonParser {
 				type = new TypeToken<Maze>(){}.getType();
 				else if(object instanceof Game)
 					type = new TypeToken<Game>(){}.getType();
-						else if(object instanceof Questions)
-							type = new TypeToken<Questions>(){}.getType();
+						else if(object instanceof Question)
+							type = new TypeToken<Question>(){}.getType();
 								jsonData = gson.toJson(object, type);
 								return jsonData;
 		} catch (JsonParseException e) {
