@@ -15,7 +15,7 @@
             <Image url="@../questionTitle.PNG" />
          </image>
       </ImageView>
-      <Button fx:id="addQuestion" blendMode="SCREEN" layoutX="213.0" layoutY="158.0" mnemonicParsing="false" opacity="0.94" prefHeight="51.0" prefWidth="223.0" style="-fx-background-color: #0000CD;" text="Add Question" textAlignment="JUSTIFY" textFill="#ffee33">
+      <Button fx:id="addQuestion" blendMode="SCREEN" layoutX="213.0" layoutY="158.0" mnemonicParsing="false" onAction="#AddQues" opacity="0.94" prefHeight="51.0" prefWidth="223.0" style="-fx-background-color: #0000CD;" text="Add Question" textAlignment="JUSTIFY" textFill="#ffee33">
          <font>
             <Font name="Calibri Bold" size="26.0" />
          </font>
@@ -23,7 +23,7 @@
             <DropShadow blurType="TWO_PASS_BOX" color="#f2fc32" height="0.0" radius="19.515" width="80.06" />
          </effect>
       </Button>
-      <Button fx:id="editQuestion" blendMode="SCREEN" layoutX="213.0" layoutY="255.0" mnemonicParsing="false" opacity="0.94" prefHeight="51.0" prefWidth="223.0" style="-fx-background-color: #0000CD;" text="Edit Question" textAlignment="JUSTIFY" textFill="#ffee33">
+      <Button fx:id="editQuestion" blendMode="SCREEN" layoutX="213.0" layoutY="255.0" mnemonicParsing="false" onAction="#EditQues" opacity="0.94" prefHeight="51.0" prefWidth="223.0" style="-fx-background-color: #0000CD;" text="Edit Question" textAlignment="JUSTIFY" textFill="#ffee33">
          <font>
             <Font name="Calibri Bold" size="26.0" />
          </font>
@@ -31,7 +31,7 @@
             <DropShadow blurType="TWO_PASS_BOX" color="#f2fc32" height="0.0" radius="19.515" width="80.06" />
          </effect>
       </Button>
-      <Button fx:id="deleteQuestion" blendMode="SCREEN" layoutX="213.0" layoutY="350.0" mnemonicParsing="false" opacity="0.94" prefHeight="51.0" prefWidth="223.0" style="-fx-background-color: #0000CD;" text="Delete Question" textAlignment="JUSTIFY" textFill="#ffee33">
+      <Button fx:id="deleteQuestion" blendMode="SCREEN" layoutX="213.0" layoutY="350.0" mnemonicParsing="false" onAction="#DeleteQues" opacity="0.94" prefHeight="51.0" prefWidth="223.0" style="-fx-background-color: #0000CD;" text="Delete Question" textAlignment="JUSTIFY" textFill="#ffee33">
          <font>
             <Font name="Calibri Bold" size="26.0" />
          </font>
@@ -52,6 +52,11 @@
       <ImageView fitHeight="51.0" fitWidth="63.0" layoutX="177.0" layoutY="350.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../QA.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="exit" fitHeight="33.0" fitWidth="20.0" layoutX="603.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../X.png" />
          </image>
       </ImageView>
    </children>
