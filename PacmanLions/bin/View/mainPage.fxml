@@ -9,7 +9,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="546.0" prefWidth="637.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.mainPageController">
+<AnchorPane prefHeight="546.0" prefWidth="637.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.mainPageControl">
    <children>
       <ImageView fitHeight="142.0" fitWidth="489.0" layoutX="74.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -21,7 +21,7 @@
             <Image url="@../PacmanLogo.PNG" />
          </image>
       </ImageView>
-      <Button fx:id="startGame" blendMode="SCREEN" layoutX="400.0" layoutY="193.0" mnemonicParsing="false" opacity="0.94" prefHeight="51.0" prefWidth="198.0" style="-fx-background-color: #0000CD;" text="START GAME" textAlignment="JUSTIFY" textFill="#ffee33">
+      <Button fx:id="startGame" blendMode="SCREEN" layoutX="400.0" layoutY="193.0" mnemonicParsing="false" onAction="#StartGame" opacity="0.94" prefHeight="51.0" prefWidth="198.0" style="-fx-background-color: #0000CD;" text="START GAME" textAlignment="JUSTIFY" textFill="#ffee33">
          <font>
             <Font name="Calibri Bold" size="26.0" />
          </font>
@@ -29,7 +29,7 @@
             <DropShadow blurType="TWO_PASS_BOX" color="#f2fc32" height="0.0" radius="19.515" width="80.06" />
          </effect>
       </Button>
-      <Button fx:id="history" blendMode="SCREEN" layoutX="400.0" layoutY="259.0" mnemonicParsing="false" opacity="0.94" prefHeight="51.0" prefWidth="198.0" style="-fx-background-color: #0000CD;" text="HISTORY" textAlignment="JUSTIFY" textFill="#ffee33">
+      <Button fx:id="history" blendMode="SCREEN" layoutX="400.0" layoutY="259.0" mnemonicParsing="false" onAction="#History" opacity="0.94" prefHeight="51.0" prefWidth="198.0" style="-fx-background-color: #0000CD;" text="HISTORY" textAlignment="JUSTIFY" textFill="#ffee33">
          <font>
             <Font name="Calibri Bold" size="26.0" />
          </font>
@@ -37,7 +37,7 @@
             <DropShadow blurType="TWO_PASS_BOX" color="#f2fc32" height="0.0" radius="19.515" width="80.06" />
          </effect>
       </Button>
-      <Button fx:id="rules" blendMode="SCREEN" layoutX="400.0" layoutY="327.0" mnemonicParsing="false" opacity="0.94" prefHeight="51.0" prefWidth="198.0" style="-fx-background-color: #0000CD;" text="RULES" textAlignment="JUSTIFY" textFill="#ffee33">
+      <Button fx:id="rules" blendMode="SCREEN" layoutX="400.0" layoutY="327.0" mnemonicParsing="false" onAction="#Rules" opacity="0.94" prefHeight="51.0" prefWidth="198.0" style="-fx-background-color: #0000CD;" text="RULES" textAlignment="JUSTIFY" textFill="#ffee33">
          <font>
             <Font name="Calibri Bold" size="26.0" />
          </font>
@@ -45,7 +45,7 @@
             <DropShadow blurType="TWO_PASS_BOX" color="#f2fc32" height="0.0" radius="19.515" width="80.06" />
          </effect>
       </Button>
-      <Button fx:id="questions" blendMode="SCREEN" layoutX="400.0" layoutY="394.0" mnemonicParsing="false" opacity="0.94" prefHeight="51.0" prefWidth="198.0" style="-fx-background-color: #0000CD;" text="Q/A" textAlignment="JUSTIFY" textFill="#ffee33">
+      <Button fx:id="questions" blendMode="SCREEN" layoutX="400.0" layoutY="394.0" mnemonicParsing="false" onAction="#Questions" opacity="0.94" prefHeight="51.0" prefWidth="198.0" style="-fx-background-color: #0000CD;" text="Q/A" textAlignment="JUSTIFY" textFill="#ffee33">
          <font>
             <Font name="Calibri Bold" size="26.0" />
          </font>
@@ -157,5 +157,10 @@
             <DropShadow color="#f1ff83" height="10.0" radius="4.5" width="10.0" />
          </effect>
       </Circle>
+      <ImageView fx:id="exit" fitHeight="33.0" fitWidth="20.0" layoutX="603.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../X.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
