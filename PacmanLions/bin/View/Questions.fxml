@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="546.0" prefWidth="637.0" style="-fx-background-color: black;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="View.QuestionsController">
+   <children>
+      <ImageView fitHeight="79.0" fitWidth="372.0" layoutX="133.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../questionTitle.PNG" />
+         </image>
+      </ImageView>
+      <Button fx:id="addQuestion" blendMode="SCREEN" layoutX="213.0" layoutY="158.0" mnemonicParsing="false" onAction="#AddQues" opacity="0.94" prefHeight="51.0" prefWidth="223.0" style="-fx-background-color: #0000CD;" text="Add Question" textAlignment="JUSTIFY" textFill="#ffee33">
+         <font>
+            <Font name="Calibri Bold" size="26.0" />
+         </font>
+         <effect>
+            <DropShadow blurType="TWO_PASS_BOX" color="#f2fc32" height="0.0" radius="19.515" width="80.06" />
+         </effect>
+      </Button>
+      <Button fx:id="editQuestion" blendMode="SCREEN" layoutX="213.0" layoutY="255.0" mnemonicParsing="false" onAction="#EditQues" opacity="0.94" prefHeight="51.0" prefWidth="223.0" style="-fx-background-color: #0000CD;" text="Edit Question" textAlignment="JUSTIFY" textFill="#ffee33">
+         <font>
+            <Font name="Calibri Bold" size="26.0" />
+         </font>
+         <effect>
+            <DropShadow blurType="TWO_PASS_BOX" color="#f2fc32" height="0.0" radius="19.515" width="80.06" />
+         </effect>
+      </Button>
+      <Button fx:id="deleteQuestion" blendMode="SCREEN" layoutX="213.0" layoutY="350.0" mnemonicParsing="false" onAction="#DeleteQues" opacity="0.94" prefHeight="51.0" prefWidth="223.0" style="-fx-background-color: #0000CD;" text="Delete Question" textAlignment="JUSTIFY" textFill="#ffee33">
+         <font>
+            <Font name="Calibri Bold" size="26.0" />
+         </font>
+         <effect>
+            <DropShadow blurType="TWO_PASS_BOX" color="#f2fc32" height="0.0" radius="19.515" width="80.06" />
+         </effect>
+      </Button>
+      <ImageView fitHeight="51.0" fitWidth="63.0" layoutX="188.0" layoutY="158.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../QA.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="51.0" fitWidth="63.0" layoutX="177.0" layoutY="255.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../QA.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="51.0" fitWidth="63.0" layoutX="177.0" layoutY="350.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../QA.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="exit" fitHeight="33.0" fitWidth="20.0" layoutX="603.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../X.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
