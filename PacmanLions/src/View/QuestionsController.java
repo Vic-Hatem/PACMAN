@@ -138,6 +138,16 @@ public class QuestionsController {
 	public void closeWindow() {
 		((Stage) exit.getScene().getWindow()).close();
 	}
+	
+	public void back1(MouseEvent  event) throws Exception {
+		((Stage) exit.getScene().getWindow()).close();
+		Stage primaryStage = new Stage();
+		Parent root = FXMLLoader.load(getClass().getResource("/View/mainPage.fxml"));
+		Scene scene = new Scene(root,637,546);
+		primaryStage.setScene(scene);
+		primaryStage.show();
+
+	}
     
 	public void back(MouseEvent  event) throws Exception {
 		((Stage) exit.getScene().getWindow()).close();
@@ -145,7 +155,6 @@ public class QuestionsController {
 		Parent root = FXMLLoader.load(getClass().getResource("/View/Questions.fxml"));
 		Scene scene = new Scene(root,637,546);
 		primaryStage.setScene(scene);
-		primaryStage.setTitle("Pacman");
 		primaryStage.show();
 
 	}

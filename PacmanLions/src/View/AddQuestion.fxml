@@ -8,6 +8,8 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -54,5 +56,11 @@
       <TextField fx:id="answer2" layoutX="169.0" layoutY="233.0" prefHeight="27.0" prefWidth="304.0" style="-fx-border-color: #0000CD;" />
       <TextField fx:id="answer3" layoutX="169.0" layoutY="273.0" prefHeight="27.0" prefWidth="304.0" style="-fx-border-color: #0000CD;" />
       <TextField fx:id="answer4" layoutX="169.0" layoutY="314.0" prefHeight="27.0" prefWidth="304.0" style="-fx-border-color: #0000CD;" />
+      <ImageView fx:id="back" fitHeight="28.0" fitWidth="27.0" layoutX="24.0" layoutY="21.0" onMouseClicked="#back" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../back.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="exit" fitHeight="38.0" fitWidth="46.0" layoutX="553.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

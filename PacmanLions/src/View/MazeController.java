@@ -8,13 +8,18 @@ import Model.Maze;
 import Model.PowerPellet;
 import Model.Question;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
 
 public class MazeController implements Initializable{
 
@@ -41,7 +46,11 @@ public class MazeController implements Initializable{
 
     @FXML
     private ImageView life3;
-
+    
+	   @FXML
+	    private ImageView exit;
+	   
+	   
 	public AnchorPane createBoardView() {
 		Maze theMaze = new Maze();
 		int i,j;
@@ -128,6 +137,17 @@ public class MazeController implements Initializable{
 		return boardPane;
 	}
 
+	
+	public void back(MouseEvent  event) throws Exception {
+		((Stage) exit.getScene().getWindow()).close();
+		Stage primaryStage = new Stage();
+		Parent root = FXMLLoader.load(getClass().getResource("/View/mainPage.fxml"));
+		Scene scene = new Scene(root,637,546);
+		primaryStage.setScene(scene);
+		primaryStage.show();
+
+	}
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub

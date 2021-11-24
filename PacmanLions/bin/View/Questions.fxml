@@ -44,7 +44,7 @@
             <Image url="@../QA.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="exit" fitHeight="33.0" fitWidth="20.0" layoutX="603.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="exit" fitHeight="33.0" fitWidth="20.0" layoutX="603.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../X.png" />
          </image>
@@ -60,5 +60,10 @@
          </image>
       </ImageView>
       <ListView fx:id="listOfQuestions" layoutX="307.0" layoutY="126.0" prefHeight="395.0" prefWidth="316.0" style="-fx-border-color: #ffee33; -fx-border-image-width: 10; -fx-background-color: #ffee33;" />
+      <ImageView fx:id="back" fitHeight="28.0" fitWidth="27.0" layoutX="14.0" layoutY="11.0" onMouseClicked="#back1" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../back.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

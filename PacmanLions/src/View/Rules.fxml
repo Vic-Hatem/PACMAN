@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="694.0" prefWidth="782.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="694.0" prefWidth="782.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.RulesController">
    <children>
       <ImageView fitHeight="88.0" fitWidth="128.0" layoutX="93.0" layoutY="128.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -212,5 +212,15 @@
       </Text>
       <Line endX="243.5999755859375" layoutX="518.0" layoutY="371.0" startX="-100.0" stroke="#1f00e5" />
       <Line endX="243.5999755859375" layoutX="517.0" layoutY="263.0" startX="-100.0" stroke="#1f00e5" />
+      <ImageView fx:id="back" fitHeight="28.0" fitWidth="27.0" layoutX="14.0" layoutY="14.0" onMouseClicked="#back" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../back.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="exit" fitHeight="35.0" fitWidth="27.0" layoutX="752.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../X.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
