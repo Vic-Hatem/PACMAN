@@ -28,7 +28,7 @@ public class NicknameController {
 		closeWindow();
 		Stage primaryStage = new Stage();
 		Parent root = FXMLLoader.load(getClass().getResource("/View/Maze.fxml"));
-		Scene scene = new Scene(root,637,546);
+		Scene scene = new Scene(root,900,950);
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("Maze");
 		primaryStage.show();

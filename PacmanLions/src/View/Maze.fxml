@@ -1,8 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1">
-	<!-- TODO Add Nodes -->
+<AnchorPane prefHeight="950.0" prefWidth="900.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MazeController">
+   <children>
+      <AnchorPane fx:id="boardPane" layoutX="1.0" layoutY="47.0" prefHeight="482.0" prefWidth="637.0" />
+      <Label fx:id="score" layoutX="301.0" layoutY="14.0" text="SCORE" textFill="#efff0e">
+         <font>
+            <Font name="Calibri Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="level" layoutX="546.0" layoutY="14.0" text="LEVEL" textFill="#efff0e">
+         <font>
+            <Font name="Calibri Bold" size="24.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="pause" fitHeight="35.0" fitWidth="38.0" layoutX="851.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../pause.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="sound" fitHeight="28.0" fitWidth="26.0" layoutX="804.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../soundOn.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="life1" fitHeight="28.0" fitWidth="35.0" layoutX="14.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../pacman.PNG" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="life2" fitHeight="28.0" fitWidth="35.0" layoutX="41.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../pacman.PNG" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="life3" fitHeight="28.0" fitWidth="35.0" layoutX="68.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../pacman.PNG" />
+         </image>
+      </ImageView>
+   </children>
 </AnchorPane>
-

@@ -53,7 +53,7 @@ public class mainPageControl {
 		closeWindow();
 		Stage primaryStage = new Stage();
 		Parent root = FXMLLoader.load(getClass().getResource("/View/Rules.fxml"));
-		Scene scene = new Scene(root,637,546);
+		Scene scene = new Scene(root,782,694);
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("Read the Rules");
 		primaryStage.show();
