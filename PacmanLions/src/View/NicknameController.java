@@ -42,7 +42,7 @@ public class NicknameController {
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("Pacman");
 		primaryStage.show();
-	
+
 	}
 	public void closeWindow() {
 		((Stage) exit.getScene().getWindow()).close();

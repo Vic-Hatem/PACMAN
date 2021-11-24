@@ -13,6 +13,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class QuestionsController {
@@ -138,4 +139,14 @@ public class QuestionsController {
 		((Stage) exit.getScene().getWindow()).close();
 	}
     
+	public void back(MouseEvent  event) throws Exception {
+		((Stage) exit.getScene().getWindow()).close();
+		Stage primaryStage = new Stage();
+		Parent root = FXMLLoader.load(getClass().getResource("/View/Questions.fxml"));
+		Scene scene = new Scene(root,637,546);
+		primaryStage.setScene(scene);
+		primaryStage.setTitle("Pacman");
+		primaryStage.show();
+
+	}
 }
