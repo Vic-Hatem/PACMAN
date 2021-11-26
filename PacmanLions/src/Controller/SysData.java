@@ -177,7 +177,7 @@ public class SysData {
 	
 	
 	//add Question to the questions array
-		public void addQuestion(Question question) {
+		public boolean addQuestion(Question question) {
 			ArrayList<Question> myArray = questions.get(question.getLevel());
 			if (myArray == null) {
 				myArray = new ArrayList<Question>();
@@ -186,7 +186,7 @@ public class SysData {
 				myArray.add(question);
 			}
 			questions.put(question.getLevel(), myArray);
-
+			return true;
 		}
 
 		//deleting a question from our records

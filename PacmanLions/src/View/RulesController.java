@@ -22,6 +22,5 @@ public class RulesController {
 		Scene scene = new Scene(root,637,546);
 		primaryStage.setScene(scene);
 		primaryStage.show();
-
 	}
 }

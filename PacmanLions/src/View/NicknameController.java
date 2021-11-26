@@ -45,6 +45,6 @@ public class NicknameController {
 
 	}
 	public void closeWindow() {
-		((Stage) exit.getScene().getWindow()).close();
+		((Stage) exit.getScene().getWindow()).close(); 
 	}
 }

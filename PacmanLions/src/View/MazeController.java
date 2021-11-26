@@ -6,7 +6,6 @@ import java.util.ResourceBundle;
 import Model.Energizer;
 import Model.Maze;
 import Model.PowerPellet;
-import Model.Question;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -47,9 +46,11 @@ public class MazeController implements Initializable{
     @FXML
     private ImageView life3;
     
-	   @FXML
-	    private ImageView exit;
-	   
+	@FXML
+    private ImageView exit;
+	
+    @FXML
+    private ImageView back;
 	   
 	public AnchorPane createBoardView() {
 		Maze theMaze = new Maze();
@@ -139,7 +140,7 @@ public class MazeController implements Initializable{
 
 	
 	public void back(MouseEvent  event) throws Exception {
-		((Stage) exit.getScene().getWindow()).close();
+		((Stage) back.getScene().getWindow()).close();
 		Stage primaryStage = new Stage();
 		Parent root = FXMLLoader.load(getClass().getResource("/View/mainPage.fxml"));
 		Scene scene = new Scene(root,637,546);
@@ -153,7 +154,6 @@ public class MazeController implements Initializable{
 		// TODO Auto-generated method stub
 		
 		createBoardView();
-	
 	}
     
 
