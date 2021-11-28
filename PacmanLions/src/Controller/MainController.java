@@ -1,10 +1,13 @@
 package Controller;
 
+import java.util.ArrayList;
+
 import Model.Game;
 import Model.Ghost;
 import Model.Maze;
 import Model.Pacman;
 import Utils.DataType;
+import Utils.JsonParser;
 
 public class MainController {
 
@@ -13,12 +16,17 @@ public class MainController {
 		
 		
 		System.out.println("~~ Welcome to PACMAN ~~");
-		initSysData();
-		Maze maze = new Maze();
-
+//		initSysData();
+//		Maze maze = new Maze();
+//		ArrayList<Game> ga=new ArrayList<Game>();
+//		ga.add(new Game("jghcgc", 0, 0, 0, 0, 0, 0, 0));
+//		ga.add(new Game("0907990", 4, 4, 0, 0, 0, 0, 0));
+//		ga.add(new Game("#########", 4, 4, 0, 0, 0, 0, 0));
+		SysData.getInstance().loadQuestions("src/QuestionsFormat.txt");
 		
+	
 
-		printMaze(maze);
+//		printMaze(maze);
 		
 		
 		
@@ -27,12 +35,12 @@ public class MainController {
 
 	private static void initSysData() {
 		// TODO Auto-generated method stub
-		SysData.getInstance().writeData(DataType.HISTORY_GAMES);
-		SysData.getInstance().loadData(DataType.HISTORY_GAMES);
-		System.out.println(SysData.getInstance().getGames());
-		SysData.getInstance().loadQuestions(null);
-		System.out.println(SysData.getInstance().getQuestions());
-		SysData.getInstance().loadData(DataType.PAUSED_GAMES);
+//		SysData.getInstance().writeData(DataType.HISTORY_GAMES);
+//		SysData.getInstance().loadData(DataType.HISTORY_GAMES);
+//		System.out.println(SysData.getInstance().getGames());
+//		SysData.getInstance().loadQuestions(null);
+//		System.out.println(SysData.getInstance().getQuestions());
+//		SysData.getInstance().loadData(DataType.PAUSED_GAMES);
 		
 	}
 

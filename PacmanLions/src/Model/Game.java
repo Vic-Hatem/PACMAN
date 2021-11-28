@@ -93,4 +93,11 @@ public class Game {
 		this.correctquesthard = correctquesthard;
 	}
 
+	@Override
+	public String toString() {
+		return "Game [Nickname=" + Nickname + ", level=" + level + ", score=" + score + ", live=" + live
+				+ ", totalQuest=" + totalQuest + ", correctquesteasy=" + correctquesteasy + ", correctquestmedium="
+				+ correctquestmedium + ", correctquesthard=" + correctquesthard + "]";
+	}
+
 }
