@@ -7,7 +7,6 @@ import Model.Ghost;
 import Model.Maze;
 import Model.Pacman;
 import Utils.DataType;
-import Utils.JsonParser;
 
 public class MainController {
 
