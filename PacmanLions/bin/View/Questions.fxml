@@ -31,7 +31,7 @@
             <DropShadow blurType="TWO_PASS_BOX" color="#f2fc32" height="0.0" radius="19.515" width="80.06" />
          </effect>
       </Button>
-      <Button fx:id="deleteQuestion" blendMode="SCREEN" layoutX="39.0" layoutY="267.0" mnemonicParsing="false" onAction="#DeleteQues" opacity="0.94" prefHeight="51.0" prefWidth="222.0" style="-fx-background-color: #0000CD;" text="Delete Question" textAlignment="JUSTIFY" textFill="#ffee33">
+      <Button fx:id="deleteQuestion" blendMode="SCREEN" layoutX="39.0" layoutY="267.0" mnemonicParsing="false" onAction="#deleteQuestion" opacity="0.94" prefHeight="51.0" prefWidth="222.0" style="-fx-background-color: #0000CD;" text="Delete Question" textAlignment="JUSTIFY" textFill="#ffee33">
          <font>
             <Font name="Calibri Bold" size="26.0" />
          </font>

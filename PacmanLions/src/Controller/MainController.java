@@ -6,7 +6,6 @@ import Model.Game;
 import Model.Ghost;
 import Model.Maze;
 import Model.Pacman;
-import Utils.DataType;
 
 public class MainController {
 
@@ -21,7 +20,7 @@ public class MainController {
 //		ga.add(new Game("jghcgc", 0, 0, 0, 0, 0, 0, 0));
 //		ga.add(new Game("0907990", 4, 4, 0, 0, 0, 0, 0));
 //		ga.add(new Game("#########", 4, 4, 0, 0, 0, 0, 0));
-		SysData.getInstance().loadQuestions("src/QuestionsFormat.txt");
+		SysData.getInstance().loadQuestions();
 		
 	
 

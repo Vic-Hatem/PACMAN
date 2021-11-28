@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="546.0" prefWidth="637.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.QuestionsController">
+<AnchorPane prefHeight="546.0" prefWidth="637.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.editController">
    <children>
       <Label layoutX="227.0" layoutY="24.0" text="Edit Question" textFill="#efff0e">
          <font>
@@ -49,7 +49,7 @@
       <RadioButton fx:id="redit1" layoutX="152.0" layoutY="208.0" mnemonicParsing="false" toggleGroup="$editquestionradioanswer" />
       <RadioButton fx:id="redit3" layoutX="152.0" layoutY="288.0" mnemonicParsing="false" toggleGroup="$editquestionradioanswer" />
       <RadioButton fx:id="redit4" layoutX="152.0" layoutY="329.0" mnemonicParsing="false" toggleGroup="$editquestionradioanswer" />
-      <Button fx:id="saveEdit" blendMode="SCREEN" layoutX="495.0" layoutY="443.0" mnemonicParsing="false" opacity="0.94" prefHeight="50.0" prefWidth="97.0" style="-fx-background-color: #0000CD;" text="Save" textAlignment="JUSTIFY" textFill="#ffee33">
+      <Button fx:id="saveEdit" blendMode="SCREEN" layoutX="495.0" layoutY="443.0" mnemonicParsing="false" onAction="#editQuestion" opacity="0.94" prefHeight="50.0" prefWidth="97.0" style="-fx-background-color: #0000CD;" text="Save" textAlignment="JUSTIFY" textFill="#ffee33">
          <font>
             <Font name="Calibri Bold" size="26.0" />
          </font>

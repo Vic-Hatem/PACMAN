@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.io.Serializable;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -31,8 +32,8 @@ import com.google.gson.reflect.TypeToken;
 
 import Model.Game;
 import Model.Question;
-import Utils.DataType;
 import Utils.Difficulty;
+
 
 public class SysData {
 
@@ -78,19 +79,17 @@ public class SysData {
 
 	// load Questions from the JSON file 
 	@SuppressWarnings("unchecked")
-	public boolean loadQuestions(String externalPath) {
+	public boolean loadQuestions() {
 
-		if (externalPath != null) {
-			quesJsonPath = externalPath;
-		}
-		// Logger.log("Reading questions form path: " + quesJsonPath);
+
 		JSONParser parser = new JSONParser();
 
 		try {
 			// get question's JSON file
-			FileInputStream fis = new FileInputStream(originalPath);
+			FileInputStream fis = new FileInputStream("src/QuestionsFormat.txt");
 
 			BufferedReader reader = new BufferedReader(new InputStreamReader(fis));
+			
 			Object obj = parser.parse(reader);
 			JSONObject jo = (JSONObject) obj;
 
@@ -111,7 +110,7 @@ public class SysData {
 				String correctAnswerNum = (String) q.get("correct_ans");
 
 				// get question's difficulty level.
-				Difficulty level = getQuestionLevel(Integer.valueOf(q.get("level").toString()));
+				Difficulty level = getQuestionLevel(q.get("level").toString());
 
 				// get question's created team name.
 				 String team = (String) q.get("team");
@@ -144,7 +143,6 @@ public class SysData {
 			return false;
 		}
 		resetPathToDefault();
-		System.out.println(questions);
 		return true;
 	}
 	
@@ -154,12 +152,12 @@ public class SysData {
 	}
 	
 	// Helper method to define question's difficulty level
-	static Difficulty getQuestionLevel(int level) { 
-		if (level == 1)
+	static Difficulty getQuestionLevel(String level) { 
+		if (level.equals("EASY"))
 			return Difficulty.EASY;
-		else if (level == 2)
+		else if (level.equals("MEDIUM"))
 			return Difficulty.MEDIUM;
-		else if (level == 3)
+		else if (level.equals("HARD"))
 			return Difficulty.HARD;
 
 		return Difficulty.MEDIUM;
@@ -270,7 +268,7 @@ public class SysData {
 				JSONArray JsonArray = new JSONArray();
 
 				for (Game g : this.games) {
-					Map map = new LinkedHashMap(8);
+					Map<String, Object> map = new LinkedHashMap<String, Object>(8);
 					map.put("nickname", g.getNickname());
 					map.put("level", g.getLevel());
 					map.put("score", g.getScore());
@@ -306,23 +304,24 @@ public class SysData {
 				
 				for(Difficulty key : questions.keySet()){
 					for(Question qq : questions.get(key)) {
-						Map map = new LinkedHashMap(5);
+						Map<String, Object> map = new LinkedHashMap<String, Object>(5);
 						map.put("question", qq.getQuestion());
 						ArrayList<String> array=new ArrayList<String>();
-						array.add(qq.getAnswer1());
-						array.add(qq.getAnswer2());
-						array.add(qq.getAnswer3());
-						array.add(qq.getAnswer4());
+						array.add((String) qq.getAnswer1());
+						array.add((String) qq.getAnswer2());
+						array.add((String) qq.getAnswer3());
+						array.add((String) qq.getAnswer4());
 						map.put("answers", array);
-						map.put("correct_ans", qq.getCorrect_ans());
-						map.put("level", qq.getLevel());
-						map.put("team", qq.getTeam());
+						map.put("correct_ans", (String) qq.getCorrect_ans());
+						map.put("level",  (String) qq.getLevel().toString());
+						map.put("team", (String) qq.getTeam());
 
 
 						JsonArray.add(map);
+						
 					}
 				}
-				JsonObject.put("questions", JsonArray);
+				JsonObject.put("questions",  JsonArray);
 				PrintWriter pw = new PrintWriter("src/QuestionsFormat.txt");
 				pw.write(JsonObject.toJSONString());
 				pw.flush();
@@ -335,6 +334,7 @@ public class SysData {
 				e.printStackTrace();
 				return false;
 			}
+				
 			return true;
 			
 			}
