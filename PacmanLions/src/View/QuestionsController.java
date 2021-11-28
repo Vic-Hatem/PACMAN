@@ -4,6 +4,7 @@ import Model.Question;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 
 import Controller.SysData;
@@ -44,9 +45,19 @@ public class QuestionsController implements Initializable{
     private ImageView exit;
     
     @FXML
-    private ListView<Question> listOfQuestions;
+    private ListView<Question> listOfQuestions = new ListView<Question>();
     
-    @FXML
+    public ListView<Question> getListOfQuestions() {
+		return listOfQuestions;
+	}
+
+	public void setListOfQuestions(ListView<Question> listOfQuestions) {
+		this.listOfQuestions = listOfQuestions;
+	}
+
+
+
+	@FXML
     private TextArea question;
 
     @FXML
@@ -76,29 +87,33 @@ public class QuestionsController implements Initializable{
     @FXML
     private ComboBox<Difficulty> difficulty = new ComboBox<Difficulty>();
 
-    
     @FXML
     private Button add;
+    
+    
+    
+    
+    ////////////////////////////// EDITTTTTTT 
     @FXML
-    private TextArea editques;
+    private TextArea editques  = new TextArea();
 
     @FXML
-    private ComboBox<?> editDifficulty;
+    private ComboBox<Difficulty> editDifficulty = new ComboBox<Difficulty>();
 
     @FXML
-    private TextField editanswer1;
+    private TextField editanswer1 = new TextField();
 
     @FXML
-    private TextField editanswer2;
+    private TextField editanswer2 = new TextField();
 
     @FXML
-    private TextField editanswer3;
+    private TextField editanswer3 = new TextField();
 
     @FXML
-    private TextField editanswer4;
+    private TextField editanswer4 = new TextField();
 
     @FXML
-    private RadioButton redit2;
+    private RadioButton redit2= new RadioButton();
 
     @FXML
     private ToggleGroup addquestionradioanswers;
@@ -107,13 +122,13 @@ public class QuestionsController implements Initializable{
     private ToggleGroup editquestionradioanswer;
     
     @FXML
-    private RadioButton redit1;
+    private RadioButton redit1= new RadioButton();
 
     @FXML
-    private RadioButton redit3;
+    private RadioButton redit3= new RadioButton();
 
     @FXML
-    private RadioButton redit4;
+    private RadioButton redit4= new RadioButton();
     
     @FXML
     private ImageView back;
@@ -121,6 +136,11 @@ public class QuestionsController implements Initializable{
     @FXML
     private Button saveEdit;
     
+	static Question updatedQ;
+	private HashMap<Difficulty, ArrayList<Question>> questions;
+	SysData sysData = SysData.getInstance();
+	private ArrayList<Question> level = new ArrayList<Question>();
+
 	public void AddQues(ActionEvent event) throws Exception {
 		closeWindow();
 		Stage primaryStage = new Stage();
@@ -132,14 +152,42 @@ public class QuestionsController implements Initializable{
 		System.out.println("moran im here");
 	}
     
+	@SuppressWarnings("unlikely-arg-type")
 	public void EditQues(ActionEvent event) throws Exception {
+		this.editques.clear();
 		closeWindow();
 		Stage primaryStage = new Stage();
 		Parent root = FXMLLoader.load(getClass().getResource("/View/EditQuestion.fxml"));
 		Scene scene = new Scene(root,637,546);
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("edit question");
+		updatedQ = listOfQuestions.getSelectionModel().getSelectedItem();	
+		
+		System.out.println(updatedQ);
+		editques.setText(updatedQ.getQuestion());
+		System.out.println(editques.getText());
+		editanswer1.setText(updatedQ.getAnswer1());
+		editanswer2.setText(updatedQ.getAnswer2());
+		editanswer3.setText(updatedQ.getAnswer3());
+		editanswer4.setText(updatedQ.getAnswer4());
+		String rightAnswer = updatedQ.getCorrect_ans();
+		if (rightAnswer.equals(editanswer1)) {
+			redit1.setSelected(true);
+		} else if (rightAnswer.equals(editanswer2)) {
+			redit2.setSelected(true);
+		} else if (rightAnswer.equals(editanswer3) ){
+			redit3.setSelected(true);
+		} else {
+			redit4.setSelected(true);
+		}
+		editDifficulty.setValue(updatedQ.getLevel());
+		ObservableList<Difficulty> editlist=FXCollections.observableArrayList(Difficulty.values());
+		editDifficulty.setItems(editlist);
+	
 		primaryStage.show();
+		
+		
+		
 	}
 	
 	public void DeleteQues(ActionEvent event) throws Exception {
@@ -166,18 +214,77 @@ public class QuestionsController implements Initializable{
 		primaryStage.show();
 
 	}
-//     
-//	public void deleteQuestion(ActionEvent event) throws Exception {
-//
-//		Question q = listOfQuestions.getSelectionModel().getSelectedItem();
-//		listOfQuestions.getItems().remove(q);
-//		SysData.getInstance().removeQuestion(q);
-//		// System.out.println(SysData.getInstance().getQuestions());
-//		// SysData.getInstance().saveQuestions(null);
-//		// System.out.println(SysData.getInstance().getQuestions());
-//		// SysData.getInstance().loadQuestions(null);
-//	}
 
+	public void editQuestion(ActionEvent event) throws Exception {
+		
+		String ques = editques.getText();
+		String answer1 = editanswer1.getText();
+		String answer2 = editanswer2.getText();
+		String answer3 = editanswer3.getText();
+		String answer4 = editanswer4.getText();
+		String rightAnswer = null ;
+		int flag=0;
+		Difficulty d = editDifficulty.getValue();
+		if (redit1.isSelected()) {
+			rightAnswer = answer1;
+		} else if (redit2.isSelected()) {
+			rightAnswer = answer2;
+		} else if (redit3.isSelected()) {
+			rightAnswer = answer3;
+		} else if (redit4.isSelected()){
+			rightAnswer = answer4;
+		}
+		else
+		{
+			flag=1;
+		}
+		
+		if(ques.isEmpty()||flag==1||editDifficulty.getValue()==null
+				|| editanswer1.getText().isEmpty()||editanswer2.getText().isEmpty()|| editanswer3.getText().isEmpty()|| 
+				editanswer4.getText().isEmpty())
+		{
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("missing fields");
+			alert.setContentText("You must fill all the fields!");
+			alert.show();
+			 
+		}
+		else
+		{
+			Question q1 = new Question(ques,answer1,answer2,answer3,answer4,rightAnswer,d,"LIONS");
+			if(answer1.equals(answer2) || answer1.equals(answer3) || answer1.equals(answer4) || answer2.equals(answer3) || answer2.equals(answer4) || answer3.equals(answer4)) 
+			{ 
+				Alert alert = new Alert(AlertType.ERROR); 
+			alert.setTitle("same answer");
+			alert.setContentText("You must enter different answers!"); 
+			alert.show(); 
+			}
+			else
+			{
+				q1.setAnswer1(answer1);
+				q1.setAnswer2(answer2);
+				q1.setAnswer3(answer3);
+				q1.setAnswer4(answer4);
+				
+				System.out.println(QuestionsController.updatedQ.getQuestion());
+				SysData.getInstance().addQuestion(q1);
+				SysData.getInstance().removeQuestion(QuestionsController.updatedQ);
+				//SysData.getInstance().saveQuestions(null);
+				((Stage) back.getScene().getWindow()).close();
+				Stage primaryStage = new Stage();
+				Parent root = FXMLLoader.load(getClass().getResource("/View/Questions.fxml"));
+				Scene scene = new Scene(root,637,546);
+				primaryStage.setScene(scene);
+				primaryStage.setTitle("questions");
+				primaryStage.show();
+			}
+		
+	
+			
+		}
+		
+	}
+	
     @FXML
     public void addQuestion(MouseEvent event) throws Exception {
 		String ques = question.getText();
@@ -281,6 +388,47 @@ public class QuestionsController implements Initializable{
 		System.out.println(FXCollections.observableArrayList(Difficulty.values()));
 		ObservableList<Difficulty> list=FXCollections.observableArrayList(Difficulty.values());
 		difficulty.setItems(list);
+		
+		SysData.getInstance().loadQuestions(null);
+
+		questions = sysData.getQuestions();
+		for (Difficulty d : questions.keySet()) {
+			for (Question q : questions.get(d)) {
+				if (!level.contains(q)) {
+					level.add(q);
+				}
+
+			}
+		}
+
+		ObservableList<Question> question = FXCollections.observableArrayList(level);
+		listOfQuestions.setItems(question);
+
+		
+		
+//		Question q = QuestionsController.updatedQ;	
+//		editques.setText(q.getQuestion());
+//		System.out.println(editques.getText());
+//		editanswer1.setText(q.getAnswer1());
+//		editanswer2.setText(q.getAnswer2());
+//		editanswer3.setText(q.getAnswer3());
+//		editanswer4.setText(q.getAnswer4());
+//		String rightAnswer = q.getCorrect_ans();
+//		if (rightAnswer.equals(editanswer1)) {
+//			redit1.setSelected(true);
+//		} else if (rightAnswer.equals(editanswer2)) {
+//			redit2.setSelected(true);
+//		} else if (rightAnswer.equals(editanswer3) ){
+//			redit3.setSelected(true);
+//		} else {
+//			redit4.setSelected(true);
+//		}
+//		editDifficulty.setValue(q.getLevel());
+//		ObservableList<Difficulty> editlist=FXCollections.observableArrayList(Difficulty.values());
+//		editDifficulty.setItems(editlist);
+
+		
+		
 
 	}
 }
