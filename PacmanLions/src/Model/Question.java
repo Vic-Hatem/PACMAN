@@ -193,6 +193,7 @@ public class Question {
 	
 	//check if the user choose the answer that the user choose is the correct answer!
 	public Boolean checkCorrect(String answer) {
+		
 		if(answer.equals(this.correct_ans))
 		{
 			return true; //correct

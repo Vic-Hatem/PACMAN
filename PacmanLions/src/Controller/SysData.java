@@ -1,5 +1,6 @@
 package Controller;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -15,6 +16,7 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Random;
 
 import org.json.simple.JSONArray;
@@ -43,8 +45,6 @@ public class SysData {
 	private HashMap<Difficulty, ArrayList<Question>> questions;
 	// list for all the games
 	private ArrayList<Game> games;
-	private String quesJsonPath = "src/QuestionsFormat.txt"; 
-	private String originalPath = quesJsonPath;
 
 	// SINGELTON
 	public static SysData getInstance() {
@@ -95,6 +95,11 @@ public class SysData {
 
 			// convert question's JSON file to array .
 			JSONArray quesArray = (JSONArray) jo.get("questions");
+			
+			//if the JSON file is empty and there is no questions
+			if(Objects.isNull(quesArray)) {
+				return false;
+			}
 
 			// iterate over the values (questions).
 			Iterator<JSONObject> quesIterator = quesArray.iterator();
@@ -128,44 +133,46 @@ public class SysData {
 
 				// Add the question to questions according to the question level.
 				if (!questions.containsKey(questionToAdd.getLevel())) {
+					
 					questions.put(questionToAdd.getLevel(), new ArrayList<Question>());
 					questions.get(questionToAdd.getLevel()).add(questionToAdd);
 
 				} else {
-					questions.get(questionToAdd.getLevel()).add(questionToAdd);
-
+					//checking if the question already exits to make sure that there is no duplicates in questions
+					if(!questions.get(questionToAdd.getLevel()).contains(questionToAdd)){
+						questions.get(questionToAdd.getLevel()).add(questionToAdd);
+					}
 				}
 			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			resetPathToDefault();
 			return false;
 		}
-		resetPathToDefault();
 		return true;
 	}
 	
-	// Helper method
-	private void resetPathToDefault() {
-		quesJsonPath = originalPath;
-	}
 	
 	// Helper method to define question's difficulty level
 	static Difficulty getQuestionLevel(String level) { 
+	
 		if (level.equals("EASY"))
 			return Difficulty.EASY;
 		else if (level.equals("MEDIUM"))
 			return Difficulty.MEDIUM;
 		else if (level.equals("HARD"))
 			return Difficulty.HARD;
-
+		// Default difficulty for the question are MEDIUM
 		return Difficulty.MEDIUM;
 	}
 	
 	
 	//add Question to the questions array
 		public boolean addQuestion(Question question) {
+			
+			if(Objects.isNull(question)) {
+				return false;
+			}
 			ArrayList<Question> myArray = questions.get(question.getLevel());
 			if (myArray == null) {
 				myArray = new ArrayList<Question>();
@@ -187,7 +194,7 @@ public class SysData {
 			return false;
 		}
 
-		//Edit/modifing a question by deleteing the older version of it and adding a new question to list
+		//Edit/modifying a question by deleting the older version of it and adding a new question to list
 		public boolean editQuestion(Question question, Question newQuestion) {
 			if (removeQuestion(question)) {
 				addQuestion(newQuestion);
@@ -195,7 +202,7 @@ public class SysData {
 			}
 			return false;
 		}
-		//poping a random question by getting a random difficutly and after that a random questions from that level we choose
+		//Popping a random question by getting a random difficulty and after that a random questions from that level we choose
 		public Question popQuestion() {
 			Object[] diff = questions.keySet().toArray();
 			Difficulty key = (Difficulty) diff[new Random().nextInt(diff.length)];
@@ -206,7 +213,6 @@ public class SysData {
 	
 		// loading the history data from the JSON file
 		public boolean loadData() {
-
 		JSONParser parser = new JSONParser();
 
 		try {
@@ -219,6 +225,8 @@ public class SysData {
 
 			// convert games JSON file to array .
 			JSONArray quesArray = (JSONArray) jo.get("games");
+			
+			
 
 			// iterate over the values (games).
 			Iterator<JSONObject> quesIterator = quesArray.iterator();
@@ -245,7 +253,10 @@ public class SysData {
 
 				
 				Game gameToAdd=new Game(nickname,level,score,live,totalQuest,correctquesteasy,correctquestmedium,correctquesthard);
-				games.add(gameToAdd);
+				//avoiding duplicates
+				if(!games.contains(gameToAdd)) {
+					games.add(gameToAdd);
+				}
 
 			}
 
@@ -256,7 +267,7 @@ public class SysData {
 		return true;
 	}
 		// writing data to a json file 
-		// the flag paramter indicates either we want to write a history file or questions file...
+		// the flag parameter indicates either we want to write a history file or questions file...
 		public Boolean writeJSON(Boolean flag){
 			// flag = true ---> History/Games
 			// flag = false ---> Question
@@ -282,6 +293,7 @@ public class SysData {
 					JsonArray.add(map);
 				}
 				JsonObject.put("games", JsonArray);
+				//File f= new File("src/historyGames.txt"); 
 				PrintWriter pw = new PrintWriter("src/historyGames.txt");
 				pw.write(JsonObject.toJSONString());
 				pw.flush();
@@ -322,6 +334,8 @@ public class SysData {
 					}
 				}
 				JsonObject.put("questions",  JsonArray);
+				//File f= new File("src/QuestionsFormat.txt"); 
+
 				PrintWriter pw = new PrintWriter("src/QuestionsFormat.txt");
 				pw.write(JsonObject.toJSONString());
 				pw.flush();
@@ -340,16 +354,7 @@ public class SysData {
 			}
 		} 
 	
-	public static String readFileAsString(String file) throws Exception {
-		return new String(Files.readAllBytes(Paths.get(file)));
-	}
 	
-	
-	public void addFinishedGame(Game game) {
-		if(!games.contains(game)) {
-			games.add(game);
-		}
-	}
 
 
 	

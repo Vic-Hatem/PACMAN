@@ -138,6 +138,7 @@ public class editController implements Initializable{
 					SysData.getInstance().writeJSON(false);
 					SysData.getInstance().loadQuestions();
 					
+					
 					((Stage) back.getScene().getWindow()).close();
 					Stage primaryStage = new Stage();
 					Parent root = FXMLLoader.load(getClass().getResource("/View/Questions.fxml"));
