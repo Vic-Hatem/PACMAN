@@ -79,14 +79,14 @@ public class SysData {
 
 	// load Questions from the JSON file 
 	@SuppressWarnings("unchecked")
-	public boolean loadQuestions() {
+	public boolean loadQuestions(String path) {
 
-
+		if(path != null) {
 		JSONParser parser = new JSONParser();
 
 		try {
 			// get question's JSON file
-			FileInputStream fis = new FileInputStream("src/QuestionsFormat.txt");
+			FileInputStream fis = new FileInputStream(path);
 
 			BufferedReader reader = new BufferedReader(new InputStreamReader(fis));
 			
@@ -150,11 +150,13 @@ public class SysData {
 			return false;
 		}
 		return true;
+		}
+		return false;
 	}
 	
 	
 	// Helper method to define question's difficulty level
-	static Difficulty getQuestionLevel(String level) { 
+	public Difficulty getQuestionLevel(String level) { 
 	
 		if (level.equals("EASY"))
 			return Difficulty.EASY;
@@ -168,64 +170,63 @@ public class SysData {
 	
 	
 	//add Question to the questions array
-			public boolean addQuestion(Question question) {
+		public boolean addQuestion(Question question) {
+			
+			if(Objects.isNull(question)) {
+				return false;
+			}
+			//checking if nothing is null in the question object
+			if(question.getQuestion()!=null&&question.getAnswer1()!=null&&question.getAnswer2()!=null&&question.getAnswer3()!=null&&question.getAnswer4()!=null&&question.getCorrect_ans()!=null&&question.getLevel()!=null&&question.getTeam()!=null) {
 				
-				if(Objects.isNull(question)) {
-					return false;
-				}
-				//checking if nothing is null in the question object
-				if(question.getQuestion()!=null&&question.getAnswer1()!=null&&question.getAnswer2()!=null&&question.getAnswer3()!=null&&question.getAnswer4()!=null&&question.getCorrect_ans()!=null&&question.getLevel()!=null&&question.getTeam()!=null) {
-					
-					
-					ArrayList<Question> myArray = questions.get(question.getLevel());
-					if (myArray == null) {
-						myArray = new ArrayList<Question>();
+				
+				ArrayList<Question> myArray = questions.get(question.getLevel());
+				if (myArray == null) {
+					myArray = new ArrayList<Question>();
+					myArray.add(question);
+				} else if (!myArray.contains(question)) {
 						myArray.add(question);
-					} else if (!myArray.contains(question)) {
-							myArray.add(question);
-						
-						}
-					else {
-						return false;
+					
 					}
-						questions.put(question.getLevel(), myArray);
-						return true;
-				}
 				else {
 					return false;
 				}
+					questions.put(question.getLevel(), myArray);
+					return true;
 			}
+			else {
+				return false;
+			}
+		}
 
-			//deleting a question from our records
-			public boolean removeQuestion(Question question) {
-				if(question!=null) {
-				
-					ArrayList<Question> myArray = questions.get(question.getLevel());
-					if (myArray.contains(question)) {
-						questions.get(question.getLevel()).remove(question);
+		//deleting a question from our records
+		public boolean removeQuestion(Question question) {
+			if(question!=null) {
+			
+				ArrayList<Question> myArray = questions.get(question.getLevel());
+				if (myArray.contains(question)) {
+					questions.get(question.getLevel()).remove(question);
+					return true;
+				}
+			}
+			return false;
+		}
+
+		//Edit/modifying a question by deleting the older version of it and adding a new question to list
+		public boolean editQuestion(Question question, Question newQuestion) {
+			if(newQuestion!=null) {
+
+				if(!questions.get(newQuestion.getLevel()).contains(newQuestion)) {
+			
+					if (removeQuestion(question)) {
+						
+						addQuestion(newQuestion);
 						return true;
 					}
 				}
-				return false;
 			}
-
-			//Edit/modifying a question by deleting the older version of it and adding a new question to list
-			public boolean editQuestion(Question question, Question newQuestion) {
-				if(newQuestion!=null) {
-
-					if(!questions.get(newQuestion.getLevel()).contains(newQuestion)) {
-				
-						if (removeQuestion(question)) {
-							
-							addQuestion(newQuestion);
-							return true;
-						}
-					}
-				}
-				
-				return false;
-			}
-		
+			
+			return false;
+		}
 		//Popping a random question by getting a random difficulty and after that a random questions from that level we choose
 		public Question popQuestion() {
 			Object[] diff = questions.keySet().toArray();

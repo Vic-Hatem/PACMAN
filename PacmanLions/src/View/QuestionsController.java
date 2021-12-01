@@ -218,7 +218,7 @@ public class QuestionsController implements Initializable{
 						alert.show();
 						
 						SysData.getInstance().writeJSON(false);
-						SysData.getInstance().loadQuestions();
+						SysData.getInstance().loadQuestions("src/QuestionsFormat.txt");
 
 						closeWindow();
 						Stage primaryStage = new Stage();
@@ -277,7 +277,7 @@ public class QuestionsController implements Initializable{
 		alert.show();
 	
 		SysData.getInstance().writeJSON(false);
-		SysData.getInstance().loadQuestions();
+		SysData.getInstance().loadQuestions("src/QuestionsFormat.txt");
 		}
 	}
 	
@@ -288,7 +288,7 @@ public class QuestionsController implements Initializable{
 		ObservableList<Difficulty> list=FXCollections.observableArrayList(Difficulty.values());
 		difficulty.setItems(list);
 		
-		SysData.getInstance().loadQuestions();
+		SysData.getInstance().loadQuestions("src/QuestionsFormat.txt");
 
 		questions = sysData.getQuestions();
 		for (Difficulty d : questions.keySet()) {

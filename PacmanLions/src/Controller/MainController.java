@@ -15,7 +15,8 @@ public class MainController {
 	
 	public static void main(String[] args) {
 		
-		
+//		SysData.getInstance().loadQuestions(null);
+//		System.out.println(SysData.getInstance().getQuestions());
 		System.out.println("~~ Welcome to PACMAN ~~");
 //		initSysData();
 //		Maze maze = new Maze();

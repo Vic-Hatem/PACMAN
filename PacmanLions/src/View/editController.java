@@ -147,7 +147,7 @@ public class editController implements Initializable{
 					
 					else {
 					SysData.getInstance().writeJSON(false);
-					SysData.getInstance().loadQuestions();
+					SysData.getInstance().loadQuestions("src/QuestionsFormat.txt");
 					
 					Alert alert = new Alert(AlertType.INFORMATION);
 					alert.setTitle("Done");
