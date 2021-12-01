@@ -168,40 +168,64 @@ public class SysData {
 	
 	
 	//add Question to the questions array
-		public boolean addQuestion(Question question) {
-			
-			if(Objects.isNull(question)) {
+			public boolean addQuestion(Question question) {
+				
+				if(Objects.isNull(question)) {
+					return false;
+				}
+				//checking if nothing is null in the question object
+				if(question.getQuestion()!=null&&question.getAnswer1()!=null&&question.getAnswer2()!=null&&question.getAnswer3()!=null&&question.getAnswer4()!=null&&question.getCorrect_ans()!=null&&question.getLevel()!=null&&question.getTeam()!=null) {
+					
+					
+					ArrayList<Question> myArray = questions.get(question.getLevel());
+					if (myArray == null) {
+						myArray = new ArrayList<Question>();
+						myArray.add(question);
+					} else if (!myArray.contains(question)) {
+							myArray.add(question);
+						
+						}
+					else {
+						return false;
+					}
+						questions.put(question.getLevel(), myArray);
+						return true;
+				}
+				else {
+					return false;
+				}
+			}
+
+			//deleting a question from our records
+			public boolean removeQuestion(Question question) {
+				if(question!=null) {
+				
+					ArrayList<Question> myArray = questions.get(question.getLevel());
+					if (myArray.contains(question)) {
+						questions.get(question.getLevel()).remove(question);
+						return true;
+					}
+				}
 				return false;
 			}
-			ArrayList<Question> myArray = questions.get(question.getLevel());
-			if (myArray == null) {
-				myArray = new ArrayList<Question>();
-				myArray.add(question);
-			} else if (!myArray.contains(question)) {
-				myArray.add(question);
-			}
-			questions.put(question.getLevel(), myArray);
-			return true;
-		}
 
-		//deleting a question from our records
-		public boolean removeQuestion(Question question) {
-			ArrayList<Question> myArray = questions.get(question.getLevel());
-			if (myArray.contains(question)) {
-				questions.get(question.getLevel()).remove(question);
-				return true;
-			}
-			return false;
-		}
+			//Edit/modifying a question by deleting the older version of it and adding a new question to list
+			public boolean editQuestion(Question question, Question newQuestion) {
+				if(newQuestion!=null) {
 
-		//Edit/modifying a question by deleting the older version of it and adding a new question to list
-		public boolean editQuestion(Question question, Question newQuestion) {
-			if (removeQuestion(question)) {
-				addQuestion(newQuestion);
-				return true;
+					if(!questions.get(newQuestion.getLevel()).contains(newQuestion)) {
+				
+						if (removeQuestion(question)) {
+							
+							addQuestion(newQuestion);
+							return true;
+						}
+					}
+				}
+				
+				return false;
 			}
-			return false;
-		}
+		
 		//Popping a random question by getting a random difficulty and after that a random questions from that level we choose
 		public Question popQuestion() {
 			Object[] diff = questions.keySet().toArray();

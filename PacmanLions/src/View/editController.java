@@ -133,7 +133,19 @@ public class editController implements Initializable{
 					q1.setAnswer4(answer4);
 					
 
-					SysData.getInstance().editQuestion(QuestionsController.updatedQ,q1);
+//					SysData.getInstance().editQuestion(QuestionsController.updatedQ,q1);
+					boolean isAdded=SysData.getInstance().editQuestion(QuestionsController.updatedQ,q1);
+					System.out.println(isAdded);
+					if(!isAdded) //false then it found the same question in our collection
+					{
+						Alert alert = new Alert(AlertType.ERROR);
+						alert.setTitle("same question exists");
+						alert.setContentText("You must enter different question!");
+						alert.show();
+						
+					}
+					
+					else {
 					SysData.getInstance().writeJSON(false);
 					SysData.getInstance().loadQuestions();
 					
@@ -149,6 +161,7 @@ public class editController implements Initializable{
 					primaryStage.setScene(scene);
 					primaryStage.setTitle("questions");
 					primaryStage.show();
+				}
 				}
 			}
 		}

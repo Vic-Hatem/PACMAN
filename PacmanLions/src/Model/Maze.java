@@ -12,7 +12,7 @@ public class Maze {
 //empty = 7
 	
 
-	// we represnted the game board as an 30X30 Matrix
+	// we represented the game board as an 30X30 Matrix
 	public int [][] maze = {{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
 							{1,3,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,3,1},
 							{1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1},

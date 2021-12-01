@@ -2,6 +2,7 @@ package View;
 
 import Model.Question;
 
+
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -24,12 +25,10 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-
 public class QuestionsController implements Initializable{
 
     @FXML
@@ -91,13 +90,18 @@ public class QuestionsController implements Initializable{
     private Button add;
     
     
-    
+    // static because we want to convey this parameter to another page (editController)
 	static Question updatedQ;
 
 	private HashMap<Difficulty, ArrayList<Question>> questions;
+	
 	SysData sysData = SysData.getInstance();
+	
 	private ArrayList<Question> level = new ArrayList<Question>();
 
+	
+	
+	//This method is to open the add question page
 	public void AddQues(ActionEvent event) throws Exception {
 		closeWindow();
 		Stage primaryStage = new Stage();
@@ -108,8 +112,10 @@ public class QuestionsController implements Initializable{
 		primaryStage.show();
 	}
     
+	//This method is to open the edit question page
 	@SuppressWarnings("unlikely-arg-type")
 	public void EditQues(ActionEvent event) throws Exception {
+		//updatedQ - parameter that holds the question we selected from the list to the update question page
 		updatedQ = listOfQuestions.getSelectionModel().getSelectedItem();
 		closeWindow();
 		Stage primaryStage = new Stage();
@@ -126,7 +132,7 @@ public class QuestionsController implements Initializable{
 		((Stage) exit.getScene().getWindow()).close();
 	}
 	
-	
+	//This method is to add new question to our collection
     @FXML
     public void addQuestion(MouseEvent event) throws Exception {
 		String ques = question.getText();
@@ -135,7 +141,10 @@ public class QuestionsController implements Initializable{
 		String a3 = answer3.getText();
 		String a4 = answer4.getText();
 		String rightAnswer;
+		Difficulty d = difficulty.getValue();
+
 		
+		//Checking which answer is assigned as the correct answer
 		if (ranswer1.isSelected()) {
 			rightAnswer = "1";
 		} else if (ranswer2.isSelected()) {
@@ -146,6 +155,7 @@ public class QuestionsController implements Initializable{
 			rightAnswer = "4";
 		}
 		
+		//Checking if a radio button was selected - because if not then we cannot add the question
 		if(!ranswer1.isSelected() && !ranswer2.isSelected() && !ranswer3.isSelected()&&!ranswer4.isSelected())
 		{
 			Alert alert = new Alert(AlertType.ERROR);
@@ -154,6 +164,7 @@ public class QuestionsController implements Initializable{
 			alert.show();
 		}
 		else {
+			//Checking if the user chose one of the values from the combobox - difficulty(EASY MEDIUM HARD)
 			if(difficulty.getValue()==null)
 			{
 				Alert alert = new Alert(AlertType.ERROR);
@@ -163,6 +174,7 @@ public class QuestionsController implements Initializable{
 				
 			}
 			else {
+			//We make sure that none of the fields in the "form" are empty 
 			if(ques.isEmpty() || a1.isEmpty() || a2.isEmpty()|| a3.isEmpty()|| a4.isEmpty())
 			{
 				Alert alert = new Alert(AlertType.ERROR);
@@ -172,6 +184,7 @@ public class QuestionsController implements Initializable{
 				
 			}
 			else {
+			//we make sure that the question has 4 distinct answers 
 			if(a1.equals(a2) || a1.equals(a3) || a1.equals(a4) || a2.equals(a3) || a2.equals(a4) || a3.equals(a4))
 			{
 				Alert alert = new Alert(AlertType.ERROR);
@@ -182,12 +195,13 @@ public class QuestionsController implements Initializable{
 			}
 			else
 			{
-				Difficulty d = difficulty.getValue();
-				Question q = new Question(ques,a1,a2,a3,a4,rightAnswer,d,"LIONS");
-					
-					
+				//Finally adding the question when all the checks was OK
+				Question q = new Question(ques,a1,a2,a3,a4,rightAnswer,d,"LIONS");	
+				
+					//isAdded = returnes True if the question was added successfully
 					boolean isAdded=SysData.getInstance().addQuestion(q);
-					if(!isAdded)
+					System.out.println(isAdded);
+					if(!isAdded) //false then it found the same question in our collection
 					{
 						Alert alert = new Alert(AlertType.ERROR);
 						alert.setTitle("same question exists");
@@ -197,6 +211,7 @@ public class QuestionsController implements Initializable{
 					}
 					else
 					{
+						//inform the user that the question was added successfully
 						Alert alert = new Alert(AlertType.INFORMATION);
 						alert.setTitle("Done");
 						alert.setContentText("Your Question Was Added Succeccfully !");
@@ -239,9 +254,12 @@ public class QuestionsController implements Initializable{
 		primaryStage.show();
 	}
 
+	//This method is to delete a selected question from our collection
 	public void deleteQuestion(ActionEvent event) throws Exception {
-
+		//q - get the selected question from the list 
 		Question q = listOfQuestions.getSelectionModel().getSelectedItem();
+		
+		//if the user didnt select anu of the questions !
 		if(q == null) {
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("SELECT");
@@ -284,9 +302,6 @@ public class QuestionsController implements Initializable{
 
 		ObservableList<Question> question = FXCollections.observableArrayList(level);
 		listOfQuestions.setItems(question);
-
-
-		
 
 	}
 }

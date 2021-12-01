@@ -2,7 +2,6 @@ package View;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import Model.Energizer;
 import Model.Maze;
 import Model.PowerPellet;
@@ -51,30 +50,32 @@ public class MazeController implements Initializable{
 	
     @FXML
     private ImageView back;
-	   
+	
+    
+    
+    //this function returns an FX object - AnchorPane that include the MAZE we are building into it in this function
 	public AnchorPane createBoardView() {
 		Maze theMaze = new Maze();
 		int i,j;
-//		printMaze(theMaze);
 		int [][]maze = theMaze.getMaze();
 		for(j=0 ; j<maze.length ; j++) {
 			for(i=0 ; i<maze.length ; i++) {
-		
+				//We chose switch-case in order to handle any value on board (values we meet at this point)
 				switch(maze[i][j]) {
-				  case 1:
+				  case 1: //Wall
 						Rectangle rec =new Rectangle(j*30,i*30,28,28);
 						rec.setFill(Color.BLUE);
 					    boardPane.getChildren().add(rec);
 					    System.out.println("built wall");  
 				    break;
-				  case 3:
+				  case 3: //PowerPellet
 //				        PowerPellet pp = new PowerPellet(i,j);
 				        Circle circle =new Circle(j*30+15,i*30+15,8);
 						circle.setFill(Color.YELLOW);
 					    boardPane.getChildren().add(circle);
 					    System.out.println("built PowePellet"); 
 					break;
-				  case 4:
+				  case 4: //Question
 					   ImageView img = new ImageView("questionmark.png");
 					   img.setLayoutX(j*30+5);
 					   img.setLayoutY(i*30+5);
@@ -83,7 +84,7 @@ public class MazeController implements Initializable{
 					    boardPane.getChildren().add(img);
 					    System.out.println("built questionmark"); 
 					break;
-				  case 10:
+				  case 10: //Ghost1
 				        //here we have to do new ghost 1
 					   ImageView img1 = new ImageView("ghost1.png");
 					   img1.setLayoutX(j*30+5);
@@ -93,7 +94,7 @@ public class MazeController implements Initializable{
 					    boardPane.getChildren().add(img1);
 					    System.out.println("built ghost1"); 
 					break;
-				  case 11:
+				  case 11: //Ghost2
 					     //here we have to do new ghost 2
 					   ImageView img2 = new ImageView("ghost2.png");
 					   img2.setLayoutX(j*30+5);
@@ -103,7 +104,7 @@ public class MazeController implements Initializable{
 					    boardPane.getChildren().add(img2);
 					    System.out.println("built ghost2"); 
 					break;
-				  case 12:
+				  case 12: //Ghost3
 					     //here we have to do new ghost 3
 					   ImageView img3 = new ImageView("ghost3.png");
 					   img3.setLayoutX(j*30+5);
@@ -113,7 +114,7 @@ public class MazeController implements Initializable{
 					    boardPane.getChildren().add(img3);
 					    System.out.println("built ghost3"); 
 					break;
-				  case 5:
+				  case 5: //Pacman
 					   ImageView pacman = new ImageView("pacman.png");
 					   pacman.setLayoutX(j*30);
 					   pacman.setLayoutY(i*30);
@@ -122,7 +123,7 @@ public class MazeController implements Initializable{
 					    boardPane.getChildren().add(pacman);
 					    System.out.println("built pacman"); 
 					break;
-				  case 0:
+				  case 0: //Energizer
 //				        Energizer energy = new Energizer(i,j);
 				        Circle miniCircle =new Circle(j*30+15,i*30+15,4);
 				        miniCircle.setFill(Color.YELLOW);
@@ -130,11 +131,12 @@ public class MazeController implements Initializable{
 					    System.out.println("built Energizer");  
 				    break;
 				  default:
-				    // keep empty 
+				    // keep empty - for when we start running the game then we have to check the empty option . 
 				}
 		
 			}
 		}
+		//returning FULL MAZE !
 		return boardPane;
 	}
 
