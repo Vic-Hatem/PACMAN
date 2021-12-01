@@ -153,8 +153,7 @@ public class QuestionsController implements Initializable{
 			alert.setContentText("You must select the right answer!");
 			alert.show();
 		}
-		else
-		{
+		else {
 			if(difficulty.getValue()==null)
 			{
 				Alert alert = new Alert(AlertType.ERROR);
@@ -163,20 +162,29 @@ public class QuestionsController implements Initializable{
 				alert.show();
 				
 			}
-			
-		
+			else {
+			if(ques.isEmpty() || a1.isEmpty() || a2.isEmpty()|| a3.isEmpty()|| a4.isEmpty())
+			{
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle("Type Question");
+				alert.setContentText("You didn't Fill all the Fields (question and answers)");
+				alert.show();
+				
+			}
+			else {
+			if(a1.equals(a2) || a1.equals(a3) || a1.equals(a4) || a2.equals(a3) || a2.equals(a4) || a3.equals(a4))
+			{
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle("same answer");
+				alert.setContentText("You must enter different answers!");
+				alert.show();
+				
+			}
 			else
 			{
 				Difficulty d = difficulty.getValue();
 				Question q = new Question(ques,a1,a2,a3,a4,rightAnswer,d,"LIONS");
-					if(a1.equals(a2) || a1.equals(a3) || a1.equals(a4) || a2.equals(a3) || a2.equals(a4) || a3.equals(a4))
-					{
-						Alert alert = new Alert(AlertType.ERROR);
-						alert.setTitle("same answer");
-						alert.setContentText("You must enter different answers!");
-						alert.show();
-						
-					}
+					
 					
 					boolean isAdded=SysData.getInstance().addQuestion(q);
 					if(!isAdded)
@@ -189,9 +197,14 @@ public class QuestionsController implements Initializable{
 					}
 					else
 					{
-					
+						Alert alert = new Alert(AlertType.INFORMATION);
+						alert.setTitle("Done");
+						alert.setContentText("Your Question Was Added Succeccfully !");
+						alert.show();
+						
 						SysData.getInstance().writeJSON(false);
 						SysData.getInstance().loadQuestions();
+
 						closeWindow();
 						Stage primaryStage = new Stage();
 						Parent root = FXMLLoader.load(getClass().getResource("/View/Questions.fxml"));
@@ -202,8 +215,8 @@ public class QuestionsController implements Initializable{
 					}
 				}
 			}
-			
-			
+			}
+		}
 		}
     
     public void back1(MouseEvent  event) throws Exception {
@@ -229,12 +242,25 @@ public class QuestionsController implements Initializable{
 	public void deleteQuestion(ActionEvent event) throws Exception {
 
 		Question q = listOfQuestions.getSelectionModel().getSelectedItem();
+		if(q == null) {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("SELECT");
+			alert.setContentText("You did not select any of the questions from the list , Please Choose one");
+			alert.show();
+			
+		}
+		else {
 		listOfQuestions.getItems().remove(q);
 		SysData.getInstance().removeQuestion(q);
-		
+		 
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Done");
+		alert.setContentText("Your Question Was Deleted Succeccfully !");
+		alert.show();
+	
 		SysData.getInstance().writeJSON(false);
 		SysData.getInstance().loadQuestions();
-
+		}
 	}
 	
 	@Override

@@ -68,7 +68,7 @@ public class MazeController implements Initializable{
 					    System.out.println("built wall");  
 				    break;
 				  case 3:
-				        PowerPellet pp = new PowerPellet(i,j);
+//				        PowerPellet pp = new PowerPellet(i,j);
 				        Circle circle =new Circle(j*30+15,i*30+15,8);
 						circle.setFill(Color.YELLOW);
 					    boardPane.getChildren().add(circle);
@@ -123,7 +123,7 @@ public class MazeController implements Initializable{
 					    System.out.println("built pacman"); 
 					break;
 				  case 0:
-				        Energizer energy = new Energizer(i,j);
+//				        Energizer energy = new Energizer(i,j);
 				        Circle miniCircle =new Circle(j*30+15,i*30+15,4);
 				        miniCircle.setFill(Color.YELLOW);
 					    boardPane.getChildren().add(miniCircle);

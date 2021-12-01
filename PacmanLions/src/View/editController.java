@@ -113,8 +113,7 @@ public class editController implements Initializable{
 				Alert alert = new Alert(AlertType.ERROR);
 				alert.setTitle("missing fields");
 				alert.setContentText("You must fill all the fields!");
-				alert.show();
-				 
+				alert.show(); 
 			}
 			else
 			{
@@ -138,6 +137,10 @@ public class editController implements Initializable{
 					SysData.getInstance().writeJSON(false);
 					SysData.getInstance().loadQuestions();
 					
+					Alert alert = new Alert(AlertType.INFORMATION);
+					alert.setTitle("Done");
+					alert.setContentText("Your Question Was Edited Succeccfully !");
+					alert.show();
 					
 					((Stage) back.getScene().getWindow()).close();
 					Stage primaryStage = new Stage();
@@ -147,12 +150,10 @@ public class editController implements Initializable{
 					primaryStage.setTitle("questions");
 					primaryStage.show();
 				}
-			
-		
-				
 			}
-			
 		}
+		
+		
 		@SuppressWarnings("unlikely-arg-type")
 		@Override
 		public void initialize(URL location, ResourceBundle resources) {
