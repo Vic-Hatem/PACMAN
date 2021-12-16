@@ -238,6 +238,8 @@ public class SysData {
 	
 		// loading the history data from the JSON file
 		public boolean loadData() {
+			
+		games.clear();
 		JSONParser parser = new JSONParser();
 
 		try {
@@ -279,9 +281,13 @@ public class SysData {
 				
 				Game gameToAdd=new Game(nickname,level,score,live,totalQuest,correctquesteasy,correctquestmedium,correctquesthard);
 				//avoiding duplicates
-				if(!games.contains(gameToAdd)) {
-					games.add(gameToAdd);
+				if(games!=null) {
+					if(!games.contains(gameToAdd)) {
+						games.add(gameToAdd);
+					}
 				}
+				else games.add(gameToAdd);
+
 
 			}
 

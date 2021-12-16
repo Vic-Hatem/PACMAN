@@ -31,27 +31,11 @@ import javafx.util.Callback;
 
 public class HistoryController implements Initializable{
 
-//    @FXML
-//    private ListView<Game> HistoryList = new ListView<Game>();
-//    
-//    public ArrayList<Game> games = new ArrayList<Game>();
-//    
-//	SysData sysData = SysData.getInstance();
-//	
-//		public ListView<Game> getHistoryList() {
-//		return HistoryList;
-//	}
-//
-//	public void setHistoryList(ListView<Game> historyList) {
-//		HistoryList = historyList;
-//	}
     ObservableList<Game> games = FXCollections.observableArrayList();
 
     @FXML
     private TableView<Game> gamesTbl;
 
-//    @FXML
-//    private TableColumn<Game, Integer> colRank;
 
     @FXML
     private TableColumn<Game, String> colNickname;
@@ -66,15 +50,11 @@ public class HistoryController implements Initializable{
     private TableColumn<Game,Integer> colQuestions;
 	
 	
-//    private void setTableappearance() {
-//    	gamesTbl.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-//    }
 
     
     
     private void createTable() {
     	
-    	System.out.println("im in CT before : " + games);
 
     	colNickname.setCellValueFactory(new PropertyValueFactory<Game, String>("Nickname"));
     	colNickname.setStyle("-fx-background-color: black ;-fx-text-fill: white ;");
@@ -84,7 +64,6 @@ public class HistoryController implements Initializable{
     	colLevel.setStyle("-fx-background-color: black ;-fx-text-fill: white ;");
     	colQuestions.setCellValueFactory(new PropertyValueFactory<Game, Integer>("totalQuest"));
     	colQuestions.setStyle("-fx-background-color: black ;-fx-text-fill: white ;");
-    	System.out.println("im in CT : " + games);
     	gamesTbl.setItems(games);
     }
 
@@ -93,16 +72,20 @@ public class HistoryController implements Initializable{
 	private void fillGames() {
 		// TODO Auto-generated method stub
 	
-        ArrayList<Game> gamesData = SysData.getInstance().getGames();
+        ArrayList<Game> gamesData =new ArrayList<Game>();
+        gamesData.addAll(SysData.getInstance().getGames());
+       
+
         Collections.sort(gamesData, new Comparator<Game>() {
         	  @Override
         	  public int compare(Game u1, Game u2) {
         	    return Integer.compare(u2.getScore(), u1.getScore());
         	  }
         	});
-        System.out.println(gamesData);
+       
+        games.clear();
+
         games.addAll(gamesData);
-        System.out.println(games);
 	}
     
     
@@ -123,22 +106,10 @@ public class HistoryController implements Initializable{
 		@Override
 		public void initialize(URL location, ResourceBundle resources) {
 			// TODO Auto-generated method stub
-//			SysData.getInstance().loadData();
-//
-//			games = sysData.getGames();
-//			
-//			ObservableList<Game> game = FXCollections.observableArrayList(games);
-//			HistoryList.setItems(game);
-			
-//	        setTableappearance();
-//			games.clear();
+
 			SysData.getInstance().loadData();
 	    	fillGames();
-
-
+	    	createTable();
 		}
 
-
-
-		
 }

@@ -578,11 +578,10 @@ public class MazeController implements Initializable{
 					/* adding game object to history JSON  */
 					ArrayList<Game> gameAdd=SysData.getInstance().getGames();
 					gameAdd.add(Config.GManager);
-					System.out.println(Config.GManager);
-					System.out.println("this is GA" + gameAdd);
+					
 					SysData.getInstance().setGames(gameAdd);
 					SysData.getInstance().observableMethodForGame();
-					System.out.println("this is GA after" + SysData.getInstance().getGames());
+					
 					/*    ***************            ***************             *************************8  **************************8*/
 					Tile.setVisible(true);//sets gameover tile to true
 					
