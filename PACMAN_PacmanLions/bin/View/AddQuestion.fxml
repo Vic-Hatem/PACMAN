@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.QuestionsController">
+   <center>
+      <AnchorPane prefHeight="546.0" prefWidth="637.0" style="-fx-background-color: black;">
+         <children>
+            <Label layoutX="217.0" layoutY="14.0" text="Add Question" textFill="#efff0e">
+               <font>
+                  <Font name="Calibri Bold" size="32.0" />
+               </font>
+            </Label>
+            <Label layoutX="34.0" layoutY="104.0" text="Question " textFill="#efff0e">
+               <font>
+                  <Font name="Calibri Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="34.0" layoutY="193.0" text="Answer" textFill="#efff0e">
+               <font>
+                  <Font name="Calibri Bold" size="24.0" />
+               </font>
+            </Label>
+            <TextArea fx:id="question" layoutX="142.0" layoutY="87.0" prefHeight="62.0" prefWidth="454.0" style="-fx-border-color: #0000CD; -fx-border-width: 3;" />
+            <RadioButton fx:id="ranswer2" layoutX="142.0" layoutY="238.0" mnemonicParsing="false">
+               <toggleGroup>
+                  <ToggleGroup fx:id="addquestionradioanswers" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="ranswer1" layoutX="142.0" layoutY="198.0" mnemonicParsing="false" toggleGroup="$addquestionradioanswers" />
+            <RadioButton fx:id="ranswer3" layoutX="142.0" layoutY="278.0" mnemonicParsing="false" toggleGroup="$addquestionradioanswers" />
+            <RadioButton fx:id="ranswer4" layoutX="142.0" layoutY="319.0" mnemonicParsing="false" toggleGroup="$addquestionradioanswers" />
+            <Label layoutX="26.0" layoutY="375.0" text="Difficulty" textFill="#efff0e">
+               <font>
+                  <Font name="Calibri Bold" size="24.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="difficulty" layoutX="150.0" layoutY="376.0" prefWidth="150.0" />
+            <Button fx:id="add" blendMode="SCREEN" layoutX="485.0" layoutY="433.0" mnemonicParsing="false" onMouseClicked="#addQuestion" opacity="0.94" prefHeight="50.0" prefWidth="97.0" style="-fx-background-color: #0000CD;" text="Add" textAlignment="JUSTIFY" textFill="#ffee33">
+               <font>
+                  <Font name="Calibri Bold" size="26.0" />
+               </font>
+               <effect>
+                  <DropShadow blurType="TWO_PASS_BOX" color="#f2fc32" height="0.0" radius="19.515" width="80.06" />
+               </effect>
+            </Button>
+            <TextField fx:id="answer1" layoutX="169.0" layoutY="194.0" prefHeight="27.0" prefWidth="304.0" style="-fx-border-color: #0000CD;" />
+            <TextField fx:id="answer2" layoutX="169.0" layoutY="233.0" prefHeight="27.0" prefWidth="304.0" style="-fx-border-color: #0000CD;" />
+            <TextField fx:id="answer3" layoutX="169.0" layoutY="273.0" prefHeight="27.0" prefWidth="304.0" style="-fx-border-color: #0000CD;" />
+            <TextField fx:id="answer4" layoutX="169.0" layoutY="314.0" prefHeight="27.0" prefWidth="304.0" style="-fx-border-color: #0000CD;" />
+            <ImageView fx:id="back" fitHeight="28.0" fitWidth="27.0" layoutX="24.0" layoutY="21.0" onMouseClicked="#back" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../back.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="exit" fitHeight="38.0" fitWidth="46.0" layoutX="553.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
