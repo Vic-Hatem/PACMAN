@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.mainPageControl">
+   <top>
+      <ImageView fitHeight="142.0" fitWidth="489.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+         <image>
+            <Image url="@../pacmanTitle.PNG" />
+         </image>
+      </ImageView>
+   </top>
+   <left>
+      <ImageView fitHeight="300.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+         <image>
+            <Image url="@../PacmanLogo.PNG" />
+         </image>
+      </ImageView>
+   </left>
+   <right>
+      <VBox alignment="CENTER" prefHeight="482.0" prefWidth="247.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="startGame" blendMode="SCREEN" mnemonicParsing="false" onAction="#StartGame" opacity="0.94" prefHeight="51.0" prefWidth="198.0" style="-fx-background-color: #0000CD;" text="START GAME" textAlignment="JUSTIFY" textFill="#ffee33">
+               <font>
+                  <Font name="Calibri Bold" size="26.0" />
+               </font>
+               <effect>
+                  <DropShadow blurType="TWO_PASS_BOX" color="#f2fc32" height="0.0" radius="19.515" width="80.06" />
+               </effect>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="history" blendMode="SCREEN" mnemonicParsing="false" onAction="#History" opacity="0.94" prefHeight="51.0" prefWidth="198.0" style="-fx-background-color: #0000CD;" text="HISTORY" textAlignment="JUSTIFY" textFill="#ffee33">
+               <font>
+                  <Font name="Calibri Bold" size="26.0" />
+               </font>
+               <effect>
+                  <DropShadow blurType="TWO_PASS_BOX" color="#f2fc32" height="0.0" radius="19.515" width="80.06" />
+               </effect>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="rules" blendMode="SCREEN" mnemonicParsing="false" onAction="#Rules" opacity="0.94" prefHeight="51.0" prefWidth="198.0" style="-fx-background-color: #0000CD;" text="RULES" textAlignment="JUSTIFY" textFill="#ffee33">
+               <font>
+                  <Font name="Calibri Bold" size="26.0" />
+               </font>
+               <effect>
+                  <DropShadow blurType="TWO_PASS_BOX" color="#f2fc32" height="0.0" radius="19.515" width="80.06" />
+               </effect>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="questions" blendMode="SCREEN" mnemonicParsing="false" onAction="#Questions" opacity="0.94" prefHeight="51.0" prefWidth="198.0" style="-fx-background-color: #0000CD;" text="Q/A" textAlignment="JUSTIFY" textFill="#ffee33">
+               <font>
+                  <Font name="Calibri Bold" size="26.0" />
+               </font>
+               <effect>
+                  <DropShadow blurType="TWO_PASS_BOX" color="#f2fc32" height="0.0" radius="19.515" width="80.06" />
+               </effect>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+         <BorderPane.margin>
+            <Insets right="30.0" />
+         </BorderPane.margin>
+      </VBox>
+   </right>
+   <center>
+      <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="482.0" prefWidth="219.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="276.0" fitWidth="240.0" preserveRatio="true">
+               <image>
+                  <Image url="@../dots.PNG" />
+               </image>
+            </ImageView>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>

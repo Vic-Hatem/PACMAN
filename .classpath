@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="PacmanLions/src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/PACMAN-main"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/ext"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/lib3"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/lib5"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Jars"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/javafx-swt"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

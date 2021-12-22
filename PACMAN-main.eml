@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component inheritJdk="true">
+	<contentEntry url="file://$MODULE_DIR$"/>
+	<levels>
+		<level name="PACMAN-main" value="project"/>
+		<level name="ext" value="project"/>
+		<level name="lib3" value="project"/>
+		<level name="lib5" value="project"/>
+		<level name="Jars" value="project"/>
+		<level name="javafx-swt" value="project"/>
+	</levels>
+</component>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+
+
+<BorderPane style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.HistoryController">
+   <center>
+      <AnchorPane prefHeight="546.0" prefWidth="637.0" style="-fx-background-color: black;">
+         <children>
+            <ImageView fx:id="exit" fitHeight="48.0" fitWidth="55.0" layoutX="568.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </AnchorPane>
+   </center>
+   <top>
+      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="637.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="back" fitHeight="28.0" fitWidth="27.0" onMouseClicked="#back" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../back.png" />
+               </image>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </ImageView>
+            <ImageView fitHeight="92.0" fitWidth="338.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../historyTitle.PNG" />
+               </image>
+               <HBox.margin>
+                  <Insets left="125.0" />
+               </HBox.margin>
+            </ImageView>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </HBox>
+   </top>
+</BorderPane>

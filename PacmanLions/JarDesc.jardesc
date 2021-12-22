@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="WINDOWS-1252" standalone="no"?>
+<jardesc>
+    <jar path="C:/Users/Gres Torany/Desktop/toSubmit/TestJar.jar"/>
+    <options buildIfNeeded="true" compress="true" descriptionLocation="/PACMAN_PacmanLions/JarDesc.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="false" overwrite="false" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
+    <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
+    <selectedProjects/>
+    <manifest generateManifest="true" mainClassHandleIdentifier="=PACMAN_PacmanLions/src&lt;Controller{mainPageController.java[mainPageController" manifestLocation="" manifestVersion="1.0" reuseManifest="false" saveManifest="false" usesManifest="true">
+        <sealing sealJar="false">
+            <packagesToSeal/>
+            <packagesToUnSeal/>
+        </sealing>
+    </manifest>
+    <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
+        <file path="/PACMAN_PacmanLions/.DS_Store"/>
+        <file path="/PACMAN_PacmanLions/PACMAN_PacmanLions.iml"/>
+        <javaElement handleIdentifier="=PACMAN_PacmanLions/src"/>
+        <file path="/PACMAN_PacmanLions/PACMAN.png"/>
+        <file path="/PACMAN_PacmanLions/.classpath"/>
+        <file path="/PACMAN_PacmanLions/src.zip"/>
+        <folder path="/PACMAN_PacmanLions/Jars"/>
+        <folder path="/PACMAN_PacmanLions/jdk1.8.0_221.jdk"/>
+        <file path="/PACMAN_PacmanLions/.project"/>
+        <folder path="/PACMAN_PacmanLions/javafx-sdk-17.0-2.1"/>
+        <file path="/PACMAN_PacmanLions/QuestionsFormat.json"/>
+    </selectedElements>
+</jardesc>

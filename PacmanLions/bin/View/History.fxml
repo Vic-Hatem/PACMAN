@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.HistoryController">
+   <center>
+      <Group>
+         <children>
+            <AnchorPane prefHeight="546.0" prefWidth="637.0" style="-fx-background-color: black;">
+               <children>
+                  <TableView fx:id="gamesTbl" layoutX="14.0" layoutY="14.0" prefHeight="438.0" prefWidth="605.0" style="-fx-background-color: grey;">
+                     <columns>
+                        <TableColumn fx:id="colNickname" minWidth="0.0" prefWidth="193.59993934631348" text="Nickname" />
+                        <TableColumn fx:id="colScore" prefWidth="142.39996337890625" sortType="DESCENDING" text="Score" />
+                        <TableColumn fx:id="colLevel" prefWidth="139.99993896484375" text="Level" />
+                        <TableColumn fx:id="colQuestions" prefWidth="127.20010375976562" text="Correct Questions" />
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+         </children>
+      </Group>
+   </center>
+   <top>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="637.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="92.0" fitWidth="338.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../historyTitle.PNG" />
+               </image>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </ImageView>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </HBox>
+   </top>
+   <left>
+      <VBox BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="back" fitHeight="28.0" fitWidth="27.0" onMouseClicked="#back" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../back.png" />
+               </image>
+            </ImageView>
+         </children>
+      </VBox>
+   </left>
+</BorderPane>

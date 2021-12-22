@@ -1,1 +1,0 @@
-{"games":[{"nickname":"rr","level":2,"score":68,"live":1,"totalQuest":0,"correctquesteasy":0,"correctquestmedium":0,"correctquesthard":0},{"nickname":"2121","level":1,"score":27,"live":1,"totalQuest":0,"correctquesteasy":0,"correctquestmedium":0,"correctquesthard":0}]}

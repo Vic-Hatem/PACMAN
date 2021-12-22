@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Home">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/PacmanLions/jdk1.8.0_221.jdk/Contents/Home/javafx-src.zip!/" />
+      <root url="jar://$PROJECT_DIR$/PacmanLions/jdk1.8.0_221.jdk/Contents/Home/src.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
