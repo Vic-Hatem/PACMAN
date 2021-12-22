@@ -99,7 +99,6 @@ public class MazeController implements Initializable{
  
     @FXML
     private Canvas boardPane;  //Main canvas where game is rendered
-    
 	 
     String Pac_dir="Left";//starting direction where pacman will go
     
@@ -161,7 +160,6 @@ public class MazeController implements Initializable{
 	/*@authors Moran, Nahawand and Grace*/
 	public Canvas createBoardView(int[][] m)  {
 		
-		
 		localscore = 0;//sets local score to 0 at the start of each level
 		maze = m;//stores the recived maze at m
 		gc= boardPane.getGraphicsContext2D(); //get graphic context to draw on canvas
@@ -179,10 +177,10 @@ public class MazeController implements Initializable{
 				  case 1:{
 						Wall = new Walls(Config.Wall_img, j*Config.Scale, i*Config.Scale, boardPane);	//create walls from gameobject class
 						WallsList.add(Wall);//add walls to wall list
+
 				    break;
 				    }
 				  case 3:
-				     
 						 pellet = new PowerPellet(Config.Pellet_img, j*Config.Scale, i*Config.Scale, boardPane);	//create powerpellet from gameobject class
 						PowerPelletList.add(pellet);//add powerpellet to list
 					  
@@ -250,6 +248,8 @@ public class MazeController implements Initializable{
 		return  boardPane;
 	}
 	
+	
+
 	
 	public void DisplayMap(int x,int y) 
 	{
@@ -1097,7 +1097,6 @@ public class MazeController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
 		
-		
 		try {
 			Tile.setVisible(false);
 			pcm.speed = 2;
@@ -1105,12 +1104,15 @@ public class MazeController implements Initializable{
 			Ghost2.speed = 2;
 			Ghost3.speed = 2;
 			createBoardView(Maze.getMaze()); //Prepares The first Level
+//			createBoardViewFlower(Maze.getMaze()); //Prepares The first Level
+
 		} catch (Exception e) {
 			e.printStackTrace(); //prints the stack trace if there was a error loading maze
 		}
 		
 	}
-	
+
+
 
 
 	

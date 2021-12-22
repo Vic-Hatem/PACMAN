@@ -62,15 +62,7 @@ public class mainPageControl implements Initializable {
 
 	}
 
-	public void Options(ActionEvent event) throws Exception {
-		closeWindow();
-		Stage primaryStage = new Stage();
-		Parent root = FXMLLoader.load(getClass().getResource("/View/Options.fxml"));
-		Scene scene = new Scene(root,637,546);
-		primaryStage.setScene(scene);
-		primaryStage.setTitle("Options");
-		primaryStage.show();
-	}
+
 	public void History(ActionEvent event) throws Exception {
 		Config.MainStage.setScene(Config.HistoryScene);
 		Config.MainStage.setMaximized(true);

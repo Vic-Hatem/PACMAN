@@ -106,7 +106,8 @@ public class Config {
   public static Image Audio_img;
   public static Image Audio_img_mute;
   public static Image Wall_img;
-  
+  public static Image Flower;
+
   //Variable that controls maze size
   public static final int Scale = 20;
   
@@ -116,6 +117,7 @@ public class Config {
 		System.out.println("Initilizing");
 		//walls
 		Wall_img  = new Image("View/wall.png");
+		Flower = new Image("View/flower.png");
 		//Question 
 		Question_img_easy = new Image("View/easy.png");
 		Question_img_medium = new Image("View/medium.png");
