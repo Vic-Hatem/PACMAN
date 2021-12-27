@@ -64,6 +64,7 @@ public class mainPageControl implements Initializable {
 
 
 	public void History(ActionEvent event) throws Exception {
+		Config.HistoryScene.getStylesheets().add(getClass().getResource("tableDesign.css").toExternalForm());
 		Config.MainStage.setScene(Config.HistoryScene);
 		Config.MainStage.setMaximized(true);
 

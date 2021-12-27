@@ -37,22 +37,16 @@ public class HistoryController implements Initializable{
     private TableColumn<Game,String> colQuestions;
 	
 	
-
-    
-    
     private void createTable() {
         //adding the data to the table columns structure
     	colNickname.setCellValueFactory(new PropertyValueFactory<Game, String>("Nickname"));
-    	colNickname.setStyle("-fx-background-color: black ;-fx-text-fill: white ;");
     	colScore.setCellValueFactory(new PropertyValueFactory<Game, Integer>("score"));
-    	colScore.setStyle("-fx-background-color: black ;-fx-text-fill: white ;");
     	colLevel.setCellValueFactory(new PropertyValueFactory<Game, Integer>("level"));
-    	colLevel.setStyle("-fx-background-color: black ;-fx-text-fill: white ;");
     	colQuestions.setCellValueFactory(new PropertyValueFactory<Game, String>("totalQuest"));
-    	colQuestions.setStyle("-fx-background-color: black ;-fx-text-fill: white ;");
     	gamesTbl.setItems(games);
     	System.out.println("Created Table with: "+games);
     }
+
 
     
   //Fill the Games in the table
