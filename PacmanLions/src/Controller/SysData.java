@@ -44,8 +44,6 @@ public class SysData {
 	private HashMap<Difficulty, ArrayList<Question>> questions;
 	// list for all the games
 	private ArrayList<Game> games;
-	private String quesJsonPath = "/src/QuestionsFormat.txt";
-	private String originalPath = quesJsonPath;
 
 	// SINGELTON
 	public static SysData getInstance() {
@@ -155,11 +153,7 @@ public class SysData {
 		return false;
 	}
 	
-	// Helper method
-	private void resetPathToDefault() {
-		quesJsonPath = originalPath;
-	}
-	
+
 	// Helper method to define question's difficulty level
 	public Difficulty getQuestionLevel(String level) { 
 	
@@ -400,16 +394,8 @@ public class SysData {
 				writeJSON(true);
 			}
 	
-	public static String readFileAsString(String file) throws Exception {
-		return new String(Files.readAllBytes(Paths.get(file)));
-	}
+
 	
-	
-	public void addFinishedGame(Game game) {
-		if(!games.contains(game)) {
-			games.add(game);
-		}
-	}
 
 
 	
