@@ -76,8 +76,8 @@
             </Button>
             <AnchorPane fx:id="admin" prefHeight="92.0" prefWidth="247.0" style="-fx-background-color: yellow;">
                <children>
-                  <TextField fx:id="name" layoutX="14.0" layoutY="14.0" />
-                  <PasswordField fx:id="password" layoutX="14.0" layoutY="46.0" />
+                  <TextField fx:id="name" layoutX="14.0" layoutY="14.0" promptText="Username" />
+                  <PasswordField fx:id="password" layoutX="14.0" layoutY="46.0" promptText="Password" />
                   <Button fx:id="go" layoutX="189.0" layoutY="34.0" mnemonicParsing="false" onAction="#Go" text="Go" />
                </children>
             </AnchorPane>

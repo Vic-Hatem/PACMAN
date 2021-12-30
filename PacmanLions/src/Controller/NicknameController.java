@@ -40,32 +40,7 @@ public class NicknameController implements Initializable{
     @FXML
     private Label error;
     
-    @FXML
-    private Button change;
 
-    @FXML
-    private AnchorPane choseMode;
-
-    @FXML
-    private RadioButton flower;
-
-    @FXML
-    private RadioButton snowflake;
-
-    @FXML
-    private RadioButton fire;
-    
-    @FXML
-    private ToggleGroup mode;
-    
-    static int flag = 0;
-    
-    
-    
-	public void ChangeMode(ActionEvent event) throws Exception {
-    	choseMode.setVisible(true);
-    	
-	}
     public NicknameController() 
     {
     }
@@ -82,26 +57,6 @@ public class NicknameController implements Initializable{
 		
 		MazeController mc = Config.gmloader.getController();;
 		mc.GameInstance(Config.GManager); //calls the method from mazecontroller before its loaded
-
-		
-		/*getting mode*/
-		
-		if (flower.isSelected()) {
-			NicknameController.flag = 1;
-			System.out.println("flag = " + NicknameController.flag);
-		} else if (snowflake.isSelected()) {
-			NicknameController.flag = 2;
-			System.out.println("flag = " + NicknameController.flag);
-		} else if (fire.isSelected()) {
-			NicknameController.flag = 3;
-			System.out.println("flag = " + NicknameController.flag);
-		} else {
-			NicknameController.flag = 0;
-			System.out.println("flag = " + NicknameController.flag);
-		}
-
-		
-		/*end*/
 		
 		Config.MainStage.setScene(Config.GameScene);
 		
@@ -123,7 +78,6 @@ public class NicknameController implements Initializable{
     public void initialize(URL location, ResourceBundle resources) 
 	{
     	
-    	choseMode.setVisible(false);
     	go.disableProperty().bind(Bindings.createBooleanBinding(()->nickname.getText().trim().isEmpty(), nickname.textProperty()));
     	error.visibleProperty().bind(Bindings.createBooleanBinding(()->nickname.getText().trim().isEmpty(), nickname.textProperty()));
 
